@@ -7,7 +7,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
  * @author:Lucas
- * @description:
+ * @description:这是tomcat配置，source里面直接写Application的启动各类名
  * @Date:2019/3/6
  **/
 public class SpringTomcatApplication extends SpringBootServletInitializer {
