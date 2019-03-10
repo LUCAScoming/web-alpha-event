@@ -4,9 +4,12 @@ spring:
       username: root
       password: root
       driver-class-name: com.mysql.jdbc.Driver
-    thymeleaf:
-       cache: false
-       mode: LEGACYHTML5
+#    thymeleaf:
+#        cache: false
+#        mode: LEGACYHTML5
+
+
+
 mybatis:
   type-aliases-package: com.pjb.entity
   mapper-locations: classpath*:com.pjb.mapper/*.xml

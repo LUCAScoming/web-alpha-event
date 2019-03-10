@@ -16,7 +16,7 @@ import java.util.List;
 
 @Api(description = "用户接口")
 @Controller
-@RequestMapping("/alpha")
+@RequestMapping("alpha")
 public class UserInfoController {
     @Autowired
     private UserService userService;
@@ -27,9 +27,9 @@ public class UserInfoController {
      * @return
      */
     @ApiOperation(value = "用户查询", notes = "", produces = "application/json")
-    @GetMapping("/userList")
-    @ResponseBody
+    @GetMapping(value = "/userList")
 //    @RequiresPermissions("userInfo:view")//权限管理;
+    @ResponseBody
     public List<UserInfo> getUser() {
         return userService.getUserInfo();
     }
