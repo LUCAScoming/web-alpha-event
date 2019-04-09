@@ -32,5 +32,5 @@ public class UserService {
         return userMapper.selectOneByExample(example);
     }
 
-    
+
 }

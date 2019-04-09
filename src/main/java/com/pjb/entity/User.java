@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
@@ -24,4 +25,6 @@ public class User {
     private Date create_dt;
     private int dr;
 
+    @Transient
+    public static final String SECRET = "JKKLJOoasdlfj";
 }
