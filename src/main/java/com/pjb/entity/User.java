@@ -23,6 +23,7 @@ public class User {
     private Date update_dt;
     private String username;
     private Date create_dt;
+    private int status;
     private int dr;
 
     @Transient

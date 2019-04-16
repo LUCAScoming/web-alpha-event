@@ -1,5 +1,8 @@
 package com.pjb.entity;
 
+import lombok.Data;
+import org.springframework.stereotype.Component;
+
 import java.util.Calendar;
 
 /**
@@ -7,6 +10,8 @@ import java.util.Calendar;
  * @description:
  * @Date:2019/4/10
  **/
+@Data
+@Component
 public class TokenInfo {
     /**
      * token秘钥，请勿泄露，请勿随便修改 backups:JKKLJOoasdlfj
@@ -17,5 +22,6 @@ public class TokenInfo {
      */
     public static final int calendarField = Calendar.DATE;
     public static final int calendarInterval = 10;
+    public String SECRETKEY="xtuwuyeguanlixitong";
 
 }
