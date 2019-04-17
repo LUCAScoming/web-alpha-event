@@ -20,9 +20,9 @@ public class User {
     private Long id;
     private int identity;
     private String password;
-    private Date update_dt;
+    private Date updateDt;
     private String username;
-    private Date create_dt;
+    private Date createDt;
     private int status;
     private int dr;
 

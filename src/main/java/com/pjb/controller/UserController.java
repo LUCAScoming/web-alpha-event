@@ -23,7 +23,7 @@ import java.util.Map;
  * @Date:2019/4/9
  **/
 
-@Api(description = "用户接口")
+@Api(description = "用户相关接口")
 @Controller
 @RequestMapping("alpha/user")
 public class UserController {
@@ -52,7 +52,7 @@ public class UserController {
         }
         try {
             String token = userService.createToken(user.getId(), username);
-            user.setUpdate_dt(new Date());
+            user.setUpdateDt(new Date());
             userMapper.updateByPrimaryKey(user);
             map.put("登陆成功", "用户登陆成功");
             map.put("token", token);
