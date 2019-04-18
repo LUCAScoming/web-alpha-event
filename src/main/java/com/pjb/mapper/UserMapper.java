@@ -2,7 +2,6 @@ package com.pjb.mapper;
 
 import com.pjb.config.MyMapper;
 import com.pjb.entity.User;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 /**

@@ -39,23 +39,28 @@ public class UserController {
     public Map<Object,Object> UserLogin (@RequestParam String username,@RequestParam String password){
         Map<Object,Object> map = new HashMap<>();
         if(StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
-            map.put("statu",0);
+            map.put("login",0);
             return map;
         }
         User user = userService.vailUser(username, password);
         if (user == null) {
-            map.put("登陆失败", "用户名或密码错误");
+            map.put("登陆", "用户名或密码错误");
+            map.put("login",0);
             return map;
         }
         if (user.getStatus() == 2) {
-            map.put("登陆失败", "用户被锁定，请联系管理员");
+            map.put("登陆", "用户被锁定，请联系管理员");
+            map.put("login",0);
         }
         try {
             String token = userService.createToken(user.getId(), username);
             user.setUpdateDt(new Date());
             userMapper.updateByPrimaryKey(user);
-            map.put("登陆成功", "用户登陆成功");
+            user.setLoginStatus(1);
+            user.setPassword(null);
+            map.put("login", "用户登陆成功");
             map.put("token", token);
+            map.put("userInfo",user);
         } catch (Exception e) {
             e.printStackTrace();
         }

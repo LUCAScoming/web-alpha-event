@@ -114,8 +114,8 @@ public class UserService {
     public User vailUser(String userName, String password) {
         Example example = new Example(User.class);
         example.createCriteria().andEqualTo("username", userName)
-                .andEqualTo("password", password)
-                .andEqualTo("dr", 0);
+                .andEqualTo("password", password);
+//                .andEqualTo("dr", 0);
         return userMapper.selectOneByExample(example);
     }
 }
