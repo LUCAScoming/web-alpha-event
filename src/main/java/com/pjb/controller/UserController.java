@@ -8,11 +8,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +34,9 @@ public class UserController {
     @ApiOperation(value = "登录用户信息保存接口", notes = "传入用户名和密码")
     @PostMapping("/login")
     @ResponseBody
-    public Map<Object,Object> UserLogin (@RequestParam String username,@RequestParam String password){
+    public Map<Object,Object> UserLogin (@RequestBody User userVail, HttpServletRequest request){
+        String username =userVail.getUsername();
+        String password = userVail.getPassword();
         Map<Object,Object> map = new HashMap<>();
         if(StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
             map.put("login",0);

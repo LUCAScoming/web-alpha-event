@@ -108,5 +108,26 @@ public class JwtUtil {
         }
         return jwt.getClaims();
     }
+    /**
+     * 校验token是否正确
+     *
+     * @param token
+     * @return 是否正确
+     */
+    public static boolean verify(String token, String username) {
+        try {
+            //根据密码生成JWT效验器
+            Algorithm algorithm = Algorithm.HMAC256(SECRET);
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withClaim("username", username)
+                    .build();
+            //效验TOKEN
+            DecodedJWT jwt = verifier.verify(token);
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
+    }
+
 
 }
