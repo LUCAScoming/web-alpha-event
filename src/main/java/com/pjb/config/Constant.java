@@ -17,4 +17,9 @@ public class Constant {
      * 传入参数为空
      * */
     public static final int EX002 = 002;
+
+    /*
+    * 传入的参数不能有id
+    * */
+    public static final int EX003 = 003;
 }

@@ -42,7 +42,7 @@ public abstract class BaseService<T extends BaseEntity> {
      * @param t
      * @return
      */
-    public String saveOrUpdate(T t) throws Exception {
+    public String saveOrUpdate(T t) {
         if (t.getId() == null || t.getId().equals("")) {
             t.setId(UUID.genUUID());
             this.insert(t);
@@ -60,7 +60,7 @@ public abstract class BaseService<T extends BaseEntity> {
     }
 
 
-    public T selectById(String id) throws Exception {
+    public T selectById(String id) {
         if (StringUtils.isEmpty(id)) {
             throw new BussinessException(Constant.EX002);
         }
@@ -72,7 +72,7 @@ public abstract class BaseService<T extends BaseEntity> {
 
     }
 
-    public int deleteById(String id) throws Exception {
+    public int deleteById(String id) {
         if (StringUtils.isEmpty(id)) {
             throw new BussinessException(Constant.EX002);
         }
@@ -86,18 +86,18 @@ public abstract class BaseService<T extends BaseEntity> {
         mapper.updateByPrimaryKeySelective(t);
     }
 
-    public void insert(T t) throws BussinessException {
+    public void insert(T t) {
         if (t == null) {
             throw new BussinessException(Constant.EX001);
         }
         t.setId(UUID.genUUID());
-        mapper.insertSelective(t);
+        mapper.insert(t);
     }
 
     /**
      * 通过实体查找
      */
-    public List<T> selectByEntity(T entity) throws BussinessException {
+    public List<T> selectByEntity(T entity) {
         if (entity == null) {
             throw new BussinessException(Constant.EX001);
         }

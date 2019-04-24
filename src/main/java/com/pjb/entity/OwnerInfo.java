@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,8 +9,8 @@ import java.util.Date;
  * owner_info
  * @author 
  */
-public class OwnerInfo implements Serializable {
-    private String id;
+public class OwnerInfo extends BaseEntity implements Serializable {
+//    private String id;
 
     /**
      * 业主id
@@ -73,13 +75,6 @@ public class OwnerInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getOwnerId() {
         return ownerId;
@@ -250,7 +245,7 @@ public class OwnerInfo implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", ownerId=").append(ownerId);
         sb.append(", phone=").append(phone);
         sb.append(", building=").append(building);

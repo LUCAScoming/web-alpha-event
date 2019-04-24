@@ -5,7 +5,7 @@ package com.pjb.config;
  * @description:
  * @Date:2019/4/25
  **/
-public class BussinessException extends Exception {
+public class BussinessException extends RuntimeException {
     private static final long serialVersionUID = 1L;
     private String message;
     private String type;
@@ -16,6 +16,7 @@ public class BussinessException extends Exception {
     }
 
     public BussinessException() {
+
     }
 
     public String getMessage() {
@@ -46,7 +47,7 @@ public class BussinessException extends Exception {
         return 1L;
     }
 
-    public BussinessException(String message, String type, int code) {
+    public BussinessException(String message) {
         this.message = message;
         this.type = type;
         this.code = code;
@@ -55,5 +56,6 @@ public class BussinessException extends Exception {
     public BussinessException(int code) {
         this.message = "此处有异常,异常码为：" + code;
         this.code = code;
+
     }
 }

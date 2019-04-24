@@ -12,15 +12,15 @@ import org.springframework.stereotype.Component;
 @Mapper
 @Component
 public interface BaseMapper<T extends BaseEntity> extends MyMapper<T> {
-    int deleteByPrimaryKey(String id);
-
-    int insert(T record);
-
-    int insertSelective(T record);
-
-    T selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(T record);
-
-    int updateByPrimaryKey(T record);
+//    int deleteByPrimaryKey(String id);
+//
+//    int insert(T record);
+//
+//    int insertSelective(T record);
+//
+//    T selectByPrimaryKey(String id);
+//
+//    int updateByPrimaryKeySelective(T record);
+//
+//    int updateByPrimaryKey(T record);
 }
