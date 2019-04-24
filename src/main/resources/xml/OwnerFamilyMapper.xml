@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pjb.mapper.OwnerFamilyMapper">
+  <resultMap id="BaseResultMap" type="com.pjb.entity.OwnerFamily">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="family_id" jdbcType="VARCHAR" property="familyId" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="family_num" jdbcType="VARCHAR" property="familyNum" />
+    <result column="update_dt" jdbcType="TIMESTAMP" property="updateDt" />
+    <result column="create_dt" jdbcType="TIMESTAMP" property="createDt" />
+    <result column="dr" jdbcType="INTEGER" property="dr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, family_id, owner_id, family_num, update_dt, create_dt, dr
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from owner_family
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from owner_family
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pjb.entity.OwnerFamily">
+    insert into owner_family (id, family_id, owner_id, 
+      family_num, update_dt, create_dt, 
+      dr)
+    values (#{id,jdbcType=VARCHAR}, #{familyId,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, 
+      #{familyNum,jdbcType=VARCHAR}, #{updateDt,jdbcType=TIMESTAMP}, #{createDt,jdbcType=TIMESTAMP}, 
+      #{dr,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pjb.entity.OwnerFamily">
+    insert into owner_family
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="familyId != null">
+        family_id,
+      </if>
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="familyNum != null">
+        family_num,
+      </if>
+      <if test="updateDt != null">
+        update_dt,
+      </if>
+      <if test="createDt != null">
+        create_dt,
+      </if>
+      <if test="dr != null">
+        dr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="familyId != null">
+        #{familyId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="familyNum != null">
+        #{familyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDt != null">
+        #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDt != null">
+        #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null">
+        #{dr,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pjb.entity.OwnerFamily">
+    update owner_family
+    <set>
+      <if test="familyId != null">
+        family_id = #{familyId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="familyNum != null">
+        family_num = #{familyNum,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDt != null">
+        update_dt = #{updateDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDt != null">
+        create_dt = #{createDt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dr != null">
+        dr = #{dr,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pjb.entity.OwnerFamily">
+    update owner_family
+    set family_id = #{familyId,jdbcType=VARCHAR},
+      owner_id = #{ownerId,jdbcType=VARCHAR},
+      family_num = #{familyNum,jdbcType=VARCHAR},
+      update_dt = #{updateDt,jdbcType=TIMESTAMP},
+      create_dt = #{createDt,jdbcType=TIMESTAMP},
+      dr = #{dr,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

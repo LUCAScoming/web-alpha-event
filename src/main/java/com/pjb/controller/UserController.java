@@ -36,9 +36,9 @@ public class UserController {
     @ApiOperation(value = "登录用户信息保存接口", notes = "传入用户名和密码")
     @PostMapping("/login")
     @ResponseBody
-    public Map<Object,Object> UserLogin (@RequestBody User userVail, HttpServletRequest request){
-        String username =userVail.getUsername();
-        String password = userVail.getPassword();
+    public Map<Object,Object> UserLogin (@RequestParam String username, @RequestParam String password, HttpServletRequest request){
+//        String username =userVail.getUsername();
+//        String password = userVail.getPassword();
         Map<Object,Object> map = new HashMap<>();
         if(StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
             map.put("login",0);

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pjb.mapper.SuggestionComplaintsMapper">
+  <resultMap id="BaseResultMap" type="com.pjb.entity.SuggestionComplaints">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="scer_id" jdbcType="VARCHAR" property="scerId" />
+    <result column="scer_name" jdbcType="VARCHAR" property="scerName" />
+    <result column="sc_msg" jdbcType="VARCHAR" property="scMsg" />
+    <result column="sc_type" jdbcType="INTEGER" property="scType" />
+    <result column="sc_status" jdbcType="INTEGER" property="scStatus" />
+    <result column="processer_id" jdbcType="VARCHAR" property="processerId" />
+    <result column="processer_name" jdbcType="VARCHAR" property="processerName" />
+    <result column="peocesser_time" jdbcType="TIMESTAMP" property="peocesserTime" />
+    <result column="processer_result" jdbcType="VARCHAR" property="processerResult" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, scer_id, scer_name, sc_msg, sc_type, sc_status, processer_id, processer_name, 
+    peocesser_time, processer_result
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from suggestion_complaints
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from suggestion_complaints
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pjb.entity.SuggestionComplaints">
+    insert into suggestion_complaints (id, scer_id, scer_name, 
+      sc_msg, sc_type, sc_status, 
+      processer_id, processer_name, peocesser_time, 
+      processer_result)
+    values (#{id,jdbcType=VARCHAR}, #{scerId,jdbcType=VARCHAR}, #{scerName,jdbcType=VARCHAR}, 
+      #{scMsg,jdbcType=VARCHAR}, #{scType,jdbcType=INTEGER}, #{scStatus,jdbcType=INTEGER}, 
+      #{processerId,jdbcType=VARCHAR}, #{processerName,jdbcType=VARCHAR}, #{peocesserTime,jdbcType=TIMESTAMP}, 
+      #{processerResult,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pjb.entity.SuggestionComplaints">
+    insert into suggestion_complaints
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="scerId != null">
+        scer_id,
+      </if>
+      <if test="scerName != null">
+        scer_name,
+      </if>
+      <if test="scMsg != null">
+        sc_msg,
+      </if>
+      <if test="scType != null">
+        sc_type,
+      </if>
+      <if test="scStatus != null">
+        sc_status,
+      </if>
+      <if test="processerId != null">
+        processer_id,
+      </if>
+      <if test="processerName != null">
+        processer_name,
+      </if>
+      <if test="peocesserTime != null">
+        peocesser_time,
+      </if>
+      <if test="processerResult != null">
+        processer_result,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="scerId != null">
+        #{scerId,jdbcType=VARCHAR},
+      </if>
+      <if test="scerName != null">
+        #{scerName,jdbcType=VARCHAR},
+      </if>
+      <if test="scMsg != null">
+        #{scMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="scType != null">
+        #{scType,jdbcType=INTEGER},
+      </if>
+      <if test="scStatus != null">
+        #{scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="processerId != null">
+        #{processerId,jdbcType=VARCHAR},
+      </if>
+      <if test="processerName != null">
+        #{processerName,jdbcType=VARCHAR},
+      </if>
+      <if test="peocesserTime != null">
+        #{peocesserTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processerResult != null">
+        #{processerResult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pjb.entity.SuggestionComplaints">
+    update suggestion_complaints
+    <set>
+      <if test="scerId != null">
+        scer_id = #{scerId,jdbcType=VARCHAR},
+      </if>
+      <if test="scerName != null">
+        scer_name = #{scerName,jdbcType=VARCHAR},
+      </if>
+      <if test="scMsg != null">
+        sc_msg = #{scMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="scType != null">
+        sc_type = #{scType,jdbcType=INTEGER},
+      </if>
+      <if test="scStatus != null">
+        sc_status = #{scStatus,jdbcType=INTEGER},
+      </if>
+      <if test="processerId != null">
+        processer_id = #{processerId,jdbcType=VARCHAR},
+      </if>
+      <if test="processerName != null">
+        processer_name = #{processerName,jdbcType=VARCHAR},
+      </if>
+      <if test="peocesserTime != null">
+        peocesser_time = #{peocesserTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="processerResult != null">
+        processer_result = #{processerResult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pjb.entity.SuggestionComplaints">
+    update suggestion_complaints
+    set scer_id = #{scerId,jdbcType=VARCHAR},
+      scer_name = #{scerName,jdbcType=VARCHAR},
+      sc_msg = #{scMsg,jdbcType=VARCHAR},
+      sc_type = #{scType,jdbcType=INTEGER},
+      sc_status = #{scStatus,jdbcType=INTEGER},
+      processer_id = #{processerId,jdbcType=VARCHAR},
+      processer_name = #{processerName,jdbcType=VARCHAR},
+      peocesser_time = #{peocesserTime,jdbcType=TIMESTAMP},
+      processer_result = #{processerResult,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

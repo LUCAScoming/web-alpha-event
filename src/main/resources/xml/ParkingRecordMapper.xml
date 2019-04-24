@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pjb.mapper.ParkingRecordMapper">
+  <resultMap id="BaseResultMap" type="com.pjb.entity.ParkingRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="car_num" jdbcType="BIGINT" property="carNum" />
+    <result column="car_owner_id" jdbcType="VARCHAR" property="carOwnerId" />
+    <result column="car_owner_name" jdbcType="VARCHAR" property="carOwnerName" />
+    <result column="car_enter_time" jdbcType="TIMESTAMP" property="carEnterTime" />
+    <result column="car_leave_time" jdbcType="TIMESTAMP" property="carLeaveTime" />
+    <result column="car_enter_area" jdbcType="VARCHAR" property="carEnterArea" />
+    <result column="car_leave_area" jdbcType="VARCHAR" property="carLeaveArea" />
+    <result column="manager_id" jdbcType="VARCHAR" property="managerId" />
+    <result column="manager_name" jdbcType="VARCHAR" property="managerName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, car_num, car_owner_id, car_owner_name, car_enter_time, car_leave_time, car_enter_area, 
+    car_leave_area, manager_id, manager_name
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from parking_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from parking_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pjb.entity.ParkingRecord">
+    insert into parking_record (id, car_num, car_owner_id, 
+      car_owner_name, car_enter_time, car_leave_time, 
+      car_enter_area, car_leave_area, manager_id, 
+      manager_name)
+    values (#{id,jdbcType=VARCHAR}, #{carNum,jdbcType=BIGINT}, #{carOwnerId,jdbcType=VARCHAR}, 
+      #{carOwnerName,jdbcType=VARCHAR}, #{carEnterTime,jdbcType=TIMESTAMP}, #{carLeaveTime,jdbcType=TIMESTAMP}, 
+      #{carEnterArea,jdbcType=VARCHAR}, #{carLeaveArea,jdbcType=VARCHAR}, #{managerId,jdbcType=VARCHAR}, 
+      #{managerName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pjb.entity.ParkingRecord">
+    insert into parking_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="carNum != null">
+        car_num,
+      </if>
+      <if test="carOwnerId != null">
+        car_owner_id,
+      </if>
+      <if test="carOwnerName != null">
+        car_owner_name,
+      </if>
+      <if test="carEnterTime != null">
+        car_enter_time,
+      </if>
+      <if test="carLeaveTime != null">
+        car_leave_time,
+      </if>
+      <if test="carEnterArea != null">
+        car_enter_area,
+      </if>
+      <if test="carLeaveArea != null">
+        car_leave_area,
+      </if>
+      <if test="managerId != null">
+        manager_id,
+      </if>
+      <if test="managerName != null">
+        manager_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="carNum != null">
+        #{carNum,jdbcType=BIGINT},
+      </if>
+      <if test="carOwnerId != null">
+        #{carOwnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="carOwnerName != null">
+        #{carOwnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="carEnterTime != null">
+        #{carEnterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carLeaveTime != null">
+        #{carLeaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carEnterArea != null">
+        #{carEnterArea,jdbcType=VARCHAR},
+      </if>
+      <if test="carLeaveArea != null">
+        #{carLeaveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="managerId != null">
+        #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="managerName != null">
+        #{managerName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pjb.entity.ParkingRecord">
+    update parking_record
+    <set>
+      <if test="carNum != null">
+        car_num = #{carNum,jdbcType=BIGINT},
+      </if>
+      <if test="carOwnerId != null">
+        car_owner_id = #{carOwnerId,jdbcType=VARCHAR},
+      </if>
+      <if test="carOwnerName != null">
+        car_owner_name = #{carOwnerName,jdbcType=VARCHAR},
+      </if>
+      <if test="carEnterTime != null">
+        car_enter_time = #{carEnterTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carLeaveTime != null">
+        car_leave_time = #{carLeaveTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carEnterArea != null">
+        car_enter_area = #{carEnterArea,jdbcType=VARCHAR},
+      </if>
+      <if test="carLeaveArea != null">
+        car_leave_area = #{carLeaveArea,jdbcType=VARCHAR},
+      </if>
+      <if test="managerId != null">
+        manager_id = #{managerId,jdbcType=VARCHAR},
+      </if>
+      <if test="managerName != null">
+        manager_name = #{managerName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pjb.entity.ParkingRecord">
+    update parking_record
+    set car_num = #{carNum,jdbcType=BIGINT},
+      car_owner_id = #{carOwnerId,jdbcType=VARCHAR},
+      car_owner_name = #{carOwnerName,jdbcType=VARCHAR},
+      car_enter_time = #{carEnterTime,jdbcType=TIMESTAMP},
+      car_leave_time = #{carLeaveTime,jdbcType=TIMESTAMP},
+      car_enter_area = #{carEnterArea,jdbcType=VARCHAR},
+      car_leave_area = #{carLeaveArea,jdbcType=VARCHAR},
+      manager_id = #{managerId,jdbcType=VARCHAR},
+      manager_name = #{managerName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

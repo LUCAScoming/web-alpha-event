@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pjb.mapper.RepairInfoMapper">
+  <resultMap id="BaseResultMap" type="com.pjb.entity.RepairInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="reporter_id" jdbcType="VARCHAR" property="reporterId" />
+    <result column="reporter_name" jdbcType="VARCHAR" property="reporterName" />
+    <result column="rep_reason" jdbcType="INTEGER" property="repReason" />
+    <result column="rep_description" jdbcType="VARCHAR" property="repDescription" />
+    <result column="rep_time" jdbcType="TIMESTAMP" property="repTime" />
+    <result column="rep_statu" jdbcType="INTEGER" property="repStatu" />
+    <result column="rep_area" jdbcType="VARCHAR" property="repArea" />
+    <result column="service_id" jdbcType="VARCHAR" property="serviceId" />
+    <result column="service_name" jdbcType="VARCHAR" property="serviceName" />
+    <result column="service_statu" jdbcType="INTEGER" property="serviceStatu" />
+    <result column="checker_id" jdbcType="VARCHAR" property="checkerId" />
+    <result column="checker_name" jdbcType="VARCHAR" property="checkerName" />
+    <result column="rep_comment" jdbcType="VARCHAR" property="repComment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, reporter_id, reporter_name, rep_reason, rep_description, rep_time, rep_statu, 
+    rep_area, service_id, service_name, service_statu, checker_id, checker_name, rep_comment
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from repair_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from repair_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.pjb.entity.RepairInfo">
+    insert into repair_info (id, reporter_id, reporter_name, 
+      rep_reason, rep_description, rep_time, 
+      rep_statu, rep_area, service_id, 
+      service_name, service_statu, checker_id, 
+      checker_name, rep_comment)
+    values (#{id,jdbcType=VARCHAR}, #{reporterId,jdbcType=VARCHAR}, #{reporterName,jdbcType=VARCHAR}, 
+      #{repReason,jdbcType=INTEGER}, #{repDescription,jdbcType=VARCHAR}, #{repTime,jdbcType=TIMESTAMP}, 
+      #{repStatu,jdbcType=INTEGER}, #{repArea,jdbcType=VARCHAR}, #{serviceId,jdbcType=VARCHAR}, 
+      #{serviceName,jdbcType=VARCHAR}, #{serviceStatu,jdbcType=INTEGER}, #{checkerId,jdbcType=VARCHAR}, 
+      #{checkerName,jdbcType=VARCHAR}, #{repComment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.pjb.entity.RepairInfo">
+    insert into repair_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="reporterId != null">
+        reporter_id,
+      </if>
+      <if test="reporterName != null">
+        reporter_name,
+      </if>
+      <if test="repReason != null">
+        rep_reason,
+      </if>
+      <if test="repDescription != null">
+        rep_description,
+      </if>
+      <if test="repTime != null">
+        rep_time,
+      </if>
+      <if test="repStatu != null">
+        rep_statu,
+      </if>
+      <if test="repArea != null">
+        rep_area,
+      </if>
+      <if test="serviceId != null">
+        service_id,
+      </if>
+      <if test="serviceName != null">
+        service_name,
+      </if>
+      <if test="serviceStatu != null">
+        service_statu,
+      </if>
+      <if test="checkerId != null">
+        checker_id,
+      </if>
+      <if test="checkerName != null">
+        checker_name,
+      </if>
+      <if test="repComment != null">
+        rep_comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterId != null">
+        #{reporterId,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterName != null">
+        #{reporterName,jdbcType=VARCHAR},
+      </if>
+      <if test="repReason != null">
+        #{repReason,jdbcType=INTEGER},
+      </if>
+      <if test="repDescription != null">
+        #{repDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="repTime != null">
+        #{repTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repStatu != null">
+        #{repStatu,jdbcType=INTEGER},
+      </if>
+      <if test="repArea != null">
+        #{repArea,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStatu != null">
+        #{serviceStatu,jdbcType=INTEGER},
+      </if>
+      <if test="checkerId != null">
+        #{checkerId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerName != null">
+        #{checkerName,jdbcType=VARCHAR},
+      </if>
+      <if test="repComment != null">
+        #{repComment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.pjb.entity.RepairInfo">
+    update repair_info
+    <set>
+      <if test="reporterId != null">
+        reporter_id = #{reporterId,jdbcType=VARCHAR},
+      </if>
+      <if test="reporterName != null">
+        reporter_name = #{reporterName,jdbcType=VARCHAR},
+      </if>
+      <if test="repReason != null">
+        rep_reason = #{repReason,jdbcType=INTEGER},
+      </if>
+      <if test="repDescription != null">
+        rep_description = #{repDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="repTime != null">
+        rep_time = #{repTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="repStatu != null">
+        rep_statu = #{repStatu,jdbcType=INTEGER},
+      </if>
+      <if test="repArea != null">
+        rep_area = #{repArea,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceId != null">
+        service_id = #{serviceId,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceName != null">
+        service_name = #{serviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStatu != null">
+        service_statu = #{serviceStatu,jdbcType=INTEGER},
+      </if>
+      <if test="checkerId != null">
+        checker_id = #{checkerId,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerName != null">
+        checker_name = #{checkerName,jdbcType=VARCHAR},
+      </if>
+      <if test="repComment != null">
+        rep_comment = #{repComment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.pjb.entity.RepairInfo">
+    update repair_info
+    set reporter_id = #{reporterId,jdbcType=VARCHAR},
+      reporter_name = #{reporterName,jdbcType=VARCHAR},
+      rep_reason = #{repReason,jdbcType=INTEGER},
+      rep_description = #{repDescription,jdbcType=VARCHAR},
+      rep_time = #{repTime,jdbcType=TIMESTAMP},
+      rep_statu = #{repStatu,jdbcType=INTEGER},
+      rep_area = #{repArea,jdbcType=VARCHAR},
+      service_id = #{serviceId,jdbcType=VARCHAR},
+      service_name = #{serviceName,jdbcType=VARCHAR},
+      service_statu = #{serviceStatu,jdbcType=INTEGER},
+      checker_id = #{checkerId,jdbcType=VARCHAR},
+      checker_name = #{checkerName,jdbcType=VARCHAR},
+      rep_comment = #{repComment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
