@@ -25,7 +25,6 @@ public abstract class BaseService<T extends BaseEntity> {
 
     @Autowired
     public BaseMapper<T> mapper;
-
     private final String orderRule_DESC = "DESC";
     private final String orderRule_ASC = "ASC";
 
@@ -35,6 +34,7 @@ public abstract class BaseService<T extends BaseEntity> {
     protected Class<T> getEntityClass() {
         return (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
     }
+
 
     /**
      * 插入或更新对象
@@ -67,10 +67,12 @@ public abstract class BaseService<T extends BaseEntity> {
         return mapper.selectByPrimaryKey(id);
     }
 
+
     public List<T> selectByAll() {
         return mapper.selectAll();
 
     }
+
 
     public int deleteById(String id) {
         if (StringUtils.isEmpty(id)) {
@@ -79,6 +81,7 @@ public abstract class BaseService<T extends BaseEntity> {
         return mapper.deleteByPrimaryKey(id);
     }
 
+
     public void update(T t) throws BussinessException {
         if (t == null) {
             throw new BussinessException(Constant.EX001);
@@ -86,13 +89,16 @@ public abstract class BaseService<T extends BaseEntity> {
         mapper.updateByPrimaryKeySelective(t);
     }
 
+
     public void insert(T t) {
         if (t == null) {
             throw new BussinessException(Constant.EX001);
         }
         t.setId(UUID.genUUID());
+
         mapper.insert(t);
     }
+
 
     /**
      * 通过实体查找
@@ -104,8 +110,11 @@ public abstract class BaseService<T extends BaseEntity> {
         return mapper.select(entity);
     }
 
+
     /**
      * 通过实体查找
+     * 排序
+     * 如果不定义排序规则，默认升序
      *
      * @param entity
      * @return
@@ -113,13 +122,14 @@ public abstract class BaseService<T extends BaseEntity> {
     public List<T> selectByEntity(T entity, String orderByProperty, String orderRule) {
         Example example = toExample(entity);
         Example.OrderBy orderBy = example.orderBy(orderByProperty);
-        if (orderRule == orderRule_ASC) {
+        if (orderRule == orderRule_ASC || StringUtils.isEmpty(orderRule)) {
             orderBy.asc();
         } else if (orderRule == orderRule_DESC) {
             orderBy.desc();
         }
         return mapper.selectByExample(example);
     }
+
 
     public Example toExample(T entity) {
         Class tempClass = getEntityClass();
@@ -162,4 +172,36 @@ public abstract class BaseService<T extends BaseEntity> {
         }
         return example;
     }
+
+
+    public T add(T t) {
+        String id = null;
+//        if (t.getId() != null) {
+//            throw new BussinessException(Constant.EX003);
+//        }
+//        id = UUID.genUUID();
+//        ownerInfo.setId(id);
+        id = saveOrUpdate(t);
+
+        return selectById(id);
+    }
+
+
+    /*
+     * 条件查询
+     * 返回对象
+     * */
+    public T selectByCondition(T t) {
+        return mapper.selectOneByExample(toExample(t));
+    }
+
+
+    /*
+     * 条件查询返回list
+     * */
+    public List<T> listByCondition(T t) {
+        return mapper.selectByExample(t);
+    }
+
+
 }

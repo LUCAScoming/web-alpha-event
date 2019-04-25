@@ -47,15 +47,14 @@ public class BussinessException extends RuntimeException {
         return 1L;
     }
 
-    public BussinessException(String message) {
-        this.message = message;
-        this.type = type;
-        this.code = code;
-    }
+//    public BussinessException(String message) {
+//        this.message = message;
+//        this.type = type;
+//        this.code = code;
+//    }
 
-    public BussinessException(int code) {
-        this.message = "此处有异常,异常码为：" + code;
-        this.code = code;
+    public BussinessException(String msg) {
+        this.message = "此处有异常,异常码为：" + msg;
 
     }
 }
