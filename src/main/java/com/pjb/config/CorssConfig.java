@@ -50,8 +50,12 @@ public class CorssConfig implements WebMvcConfigurer {
     public FilterRegistrationBean corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);   config.addAllowedOrigin("http://localhost:8081");
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("http://localhost:8081");
+        config.addAllowedOrigin("http://182.254.201.174:8080");
+        config.addAllowedOrigin("http://182.254.201.174:8080/alpha");
         config.addAllowedOrigin("null");
+        config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config); // CORS 配置对所有接口都有效
