@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -7,7 +9,7 @@ import java.util.Arrays;
  * family_members
  * @author 
  */
-public class FamilyMembers implements Serializable {
+public class FamilyMembers extends BaseEntity implements Serializable {
     private String id;
 
     /**
