@@ -1,5 +1,6 @@
 package com.pjb.config;
 
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
@@ -27,10 +28,10 @@ public class CorssConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*")// 1 设置访问源地址
-                .allowCredentials(true)// 2 设置访问源请求头
-                .allowedMethods("GET", "POST", "DELETE", "PUT", "OPTIONS") // 3 设置访问源请求方法
-                .maxAge(3600);
+                .allowedOrigins("*")
+                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
+                .maxAge(3600)
+                .allowCredentials(true);
     }
 
 
@@ -46,12 +47,18 @@ public class CorssConfig implements WebMvcConfigurer {
 
 
     @Bean
-    public CorsFilter corsFilter() {
+    public FilterRegistrationBean corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", buildConfig());
-        return new CorsFilter(source);
+        CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);   config.addAllowedOrigin("http://localhost:8081");
+        config.addAllowedOrigin("null");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", config); // CORS 配置对所有接口都有效
+        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+        bean.setOrder(0);
+        return bean;
     }
-
 
     @Override
     public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {

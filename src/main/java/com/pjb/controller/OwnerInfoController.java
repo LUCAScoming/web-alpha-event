@@ -39,6 +39,15 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     }
 
 
+    @ApiOperation(value = "查找", notes = "通过id返回对象实体", produces = "application/json")
+    @PostMapping("post/{id}")
+    public OwnerInfo entityget(@PathVariable String id) {
+        OwnerInfo ownerInfo = new OwnerInfo();
+        ownerInfo.setId(id);
+        return super.select(ownerInfo);
+    }
+
+
     @Override
     @ApiOperation(value = "删除", notes = "通过实体没有返回", produces = "application/json")
     @DeleteMapping()
