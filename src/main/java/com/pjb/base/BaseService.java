@@ -200,7 +200,7 @@ public abstract class BaseService<T extends BaseEntity> {
      * 条件查询返回list
      * */
     public List<T> listByCondition(T t) {
-        return mapper.selectByExample(t);
+        return mapper.selectByExample(toExample(t));
     }
 
 

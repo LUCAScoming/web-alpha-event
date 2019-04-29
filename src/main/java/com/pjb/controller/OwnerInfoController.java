@@ -1,5 +1,7 @@
 package com.pjb.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.pjb.base.BaseController;
 import com.pjb.entity.OwnerInfo;
 import com.pjb.service.OwnerInfoService;
@@ -8,6 +10,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author:Lucas
@@ -53,6 +57,17 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @DeleteMapping()
     public void delete(@RequestBody OwnerInfo ownerInfo) {
         super.delete(ownerInfo);
+    }
+
+
+    @ApiOperation(value = "查询分页")
+    @PostMapping("/condition")
+    public PageInfo<OwnerInfo> pageByCondition(@RequestParam Integer pageNum, @RequestParam Integer pageSize, @RequestBody OwnerInfo ownerInfo) {
+        PageHelper.startPage(pageNum, pageSize);
+//        List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
+        List<OwnerInfo> listByCondition = ownerInfoService.listByCondition(ownerInfo);
+        PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
+        return info;
     }
 
 
