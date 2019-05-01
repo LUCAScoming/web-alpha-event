@@ -62,13 +62,18 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
 
     @ApiOperation(value = "查询分页")
     @PostMapping("/condition")
-    public PageInfo<OwnerInfo> pageByCondition(@RequestParam Integer pageNum, @RequestParam Integer pageSize, @RequestBody OwnerInfo ownerInfo) {
-        PageHelper.startPage(pageNum, pageSize);
+    public PageInfo<OwnerInfo> pageByCondition(@RequestBody OwnerInfo ownerInfo) {
+        if (ownerInfo == null) {
+            PageHelper.startPage(1, 10);
+            List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
+            PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
+            return info;
+        }
+        PageHelper.startPage(ownerInfo.getPageNum(), ownerInfo.getPageSize());
 //        List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
         List<OwnerInfo> listByCondition = ownerInfoService.listByCondition(ownerInfo);
         PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
         return info;
     }
-
 
 }

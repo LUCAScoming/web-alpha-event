@@ -1,8 +1,6 @@
 package com.pjb.service;
 
 import com.pjb.base.BaseService;
-import com.pjb.config.BussinessException;
-import com.pjb.config.Constant;
 import com.pjb.entity.OwnerInfo;
 import com.pjb.mapper.OwnerInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;

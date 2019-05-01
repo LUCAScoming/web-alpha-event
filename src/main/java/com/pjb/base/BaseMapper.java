@@ -1,5 +1,6 @@
 package com.pjb.base;
 
+import com.pjb.base.BaseEntity;
 import com.pjb.config.MyMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;

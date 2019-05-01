@@ -20,14 +20,14 @@ import java.util.Map;
 public class Versionpackge {
 
 
-    @ApiOperation(value = "这是版本号，get请求",notes = "要保证版本和时间最新")
+    @ApiOperation(value = "这是版本号，get请求", notes = "要保证版本和时间最新")
     @GetMapping
-    public Map<String ,String> version (){
-        Map<String,String> version = new HashMap<>();
-        String versions_current ="1.3";
-        String version_time ="2019/4/9,";
-        version.put("当前版本号是：",versions_current);
-        version.put("版本号："+versions_current+"更新的时间是：",version_time);
+    public Map<String, String> version() {
+        Map<String, String> version = new HashMap<>();
+        String versions_current = "1.5";
+        String version_time = "2019/5/2,2：03";
+        version.put("当前版本号是：", versions_current);
+        version.put("版本号：" + versions_current + "更新的时间是：", version_time);
         return version;
     }
 }
