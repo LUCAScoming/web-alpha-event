@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.HouseMapper">
+  <resultMap id="BaseResultMap" type="entity.House">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="building" jdbcType="INTEGER" property="building" />
+    <result column="home_num" jdbcType="INTEGER" property="homeNum" />
+    <result column="buyhouse_date" jdbcType="TIMESTAMP" property="buyhouseDate" />
+    <result column="house_area" jdbcType="DOUBLE" property="houseArea" />
+    <result column="house_structure" jdbcType="VARCHAR" property="houseStructure" />
+    <result column="house_type" jdbcType="INTEGER" property="houseType" />
+    <result column="created_date" jdbcType="TIMESTAMP" property="createdDate" />
+    <result column="updated_date" jdbcType="TIMESTAMP" property="updatedDate" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner_id, owner_name, phone, building, home_num, buyhouse_date, house_area, house_structure, 
+    house_type, created_date, updated_date, created_by, `comment`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from house
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from house
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="entity.House" useGeneratedKeys="true">
+    insert into house (owner_id, owner_name, phone, 
+      building, home_num, buyhouse_date, 
+      house_area, house_structure, house_type, 
+      created_date, updated_date, created_by, 
+      `comment`)
+    values (#{ownerId,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{building,jdbcType=INTEGER}, #{homeNum,jdbcType=INTEGER}, #{buyhouseDate,jdbcType=TIMESTAMP}, 
+      #{houseArea,jdbcType=DOUBLE}, #{houseStructure,jdbcType=VARCHAR}, #{houseType,jdbcType=INTEGER}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedDate,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="entity.House" useGeneratedKeys="true">
+    insert into house
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="ownerId != null">
+        owner_id,
+      </if>
+      <if test="ownerName != null">
+        owner_name,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="building != null">
+        building,
+      </if>
+      <if test="homeNum != null">
+        home_num,
+      </if>
+      <if test="buyhouseDate != null">
+        buyhouse_date,
+      </if>
+      <if test="houseArea != null">
+        house_area,
+      </if>
+      <if test="houseStructure != null">
+        house_structure,
+      </if>
+      <if test="houseType != null">
+        house_type,
+      </if>
+      <if test="createdDate != null">
+        created_date,
+      </if>
+      <if test="updatedDate != null">
+        updated_date,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="comment != null">
+        `comment`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="ownerId != null">
+        #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="building != null">
+        #{building,jdbcType=INTEGER},
+      </if>
+      <if test="homeNum != null">
+        #{homeNum,jdbcType=INTEGER},
+      </if>
+      <if test="buyhouseDate != null">
+        #{buyhouseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="houseArea != null">
+        #{houseArea,jdbcType=DOUBLE},
+      </if>
+      <if test="houseStructure != null">
+        #{houseStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        #{houseType,jdbcType=INTEGER},
+      </if>
+      <if test="createdDate != null">
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.House">
+    update house
+    <set>
+      <if test="ownerId != null">
+        owner_id = #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        owner_name = #{ownerName,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="building != null">
+        building = #{building,jdbcType=INTEGER},
+      </if>
+      <if test="homeNum != null">
+        home_num = #{homeNum,jdbcType=INTEGER},
+      </if>
+      <if test="buyhouseDate != null">
+        buyhouse_date = #{buyhouseDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="houseArea != null">
+        house_area = #{houseArea,jdbcType=DOUBLE},
+      </if>
+      <if test="houseStructure != null">
+        house_structure = #{houseStructure,jdbcType=VARCHAR},
+      </if>
+      <if test="houseType != null">
+        house_type = #{houseType,jdbcType=INTEGER},
+      </if>
+      <if test="createdDate != null">
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedDate != null">
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        `comment` = #{comment,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.House">
+    update house
+    set owner_id = #{ownerId,jdbcType=VARCHAR},
+      owner_name = #{ownerName,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      building = #{building,jdbcType=INTEGER},
+      home_num = #{homeNum,jdbcType=INTEGER},
+      buyhouse_date = #{buyhouseDate,jdbcType=TIMESTAMP},
+      house_area = #{houseArea,jdbcType=DOUBLE},
+      house_structure = #{houseStructure,jdbcType=VARCHAR},
+      house_type = #{houseType,jdbcType=INTEGER},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      `comment` = #{comment,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
