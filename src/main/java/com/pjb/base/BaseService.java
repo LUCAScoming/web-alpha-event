@@ -2,6 +2,7 @@ package com.pjb.base;
 
 import com.pjb.config.BussinessException;
 import com.pjb.config.Constant;
+import com.pjb.config.MyMapper;
 import com.pjb.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ import java.util.List;
 public abstract class BaseService<T extends BaseEntity> {
 
     @Autowired
-    public BaseMapper<T> mapper;
+    public MyMapper<T> mapper;
     private final String orderRule_DESC = "DESC";
     private final String orderRule_ASC = "ASC";
 

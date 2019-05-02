@@ -1,8 +1,9 @@
 package com.pjb.config;
 
+import tk.mybatis.mapper.additional.insert.InsertListMapper;
 import tk.mybatis.mapper.annotation.RegisterMapper;
-import tk.mybatis.mapper.common.Mapper;
-import tk.mybatis.mapper.common.MySqlMapper;
+import tk.mybatis.mapper.common.*;
+import tk.mybatis.mapper.common.rowbounds.SelectByConditionRowBoundsMapper;
 
 /**
  * @author:Lucas

@@ -39,8 +39,6 @@ public class HouseController extends BaseController<House> {
     }
 
 
-
-
     @Override
     @ApiOperation(value = "删除", notes = "通过实体没有返回", produces = "application/json")
     @DeleteMapping()

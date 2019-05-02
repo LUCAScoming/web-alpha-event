@@ -65,6 +65,9 @@ public class OwnerInfo extends BaseEntity implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createDt;
     private Integer dr;
+
+    
+
     private static final long serialVersionUID = 1L;
 
     public String getOwnerId() {
