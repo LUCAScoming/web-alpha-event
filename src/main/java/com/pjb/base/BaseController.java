@@ -17,7 +17,8 @@ public class BaseController<T extends BaseEntity> {
 
 
     public T select(T t) {
-        return service.selectById(t.id);
+        String id = t.getId();
+        return service.selectById(id);
     }
 
 

@@ -24,8 +24,8 @@ public class Versionpackge {
     @GetMapping
     public Map<String, String> version() {
         Map<String, String> version = new HashMap<>();
-        String versions_current = "1.5";
-        String version_time = "2019/5/2,2：03";
+        String versions_current = "1.6";
+        String version_time = "2019/5/2,12：43";
         version.put("当前版本号是：", versions_current);
         version.put("版本号：" + versions_current + "更新的时间是：", version_time);
         return version;

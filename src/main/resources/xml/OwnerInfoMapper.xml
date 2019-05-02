@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.pjb.mapper.OwnerInfoMapper">
-  <resultMap id="BaseResultMap" type="com.pjb.entity.OwnerInfo">
+<mapper namespace="mapper.OwnerInfoMapper">
+  <resultMap id="BaseResultMap" type="entity.OwnerInfo">
     <id column="id" jdbcType="VARCHAR" property="id" />
     <result column="owner_id" jdbcType="VARCHAR" property="ownerId" />
+    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="building" jdbcType="INTEGER" property="building" />
     <result column="home_num" jdbcType="INTEGER" property="homeNum" />
@@ -13,14 +14,20 @@
     <result column="card_num" jdbcType="BIGINT" property="cardNum" />
     <result column="payment" jdbcType="INTEGER" property="payment" />
     <result column="family_id" jdbcType="VARCHAR" property="familyId" />
+    <result column="idty_type" jdbcType="INTEGER" property="idtyType" />
     <result column="income" jdbcType="INTEGER" property="income" />
     <result column="update_dt" jdbcType="TIMESTAMP" property="updateDt" />
     <result column="create_dt" jdbcType="TIMESTAMP" property="createDt" />
     <result column="dr" jdbcType="INTEGER" property="dr" />
+    <result column="native_place" jdbcType="VARCHAR" property="nativePlace" />
+    <result column="emergency_contact" jdbcType="VARCHAR" property="emergencyContact" />
+    <result column="emergency_relationship" jdbcType="VARCHAR" property="emergencyRelationship" />
+    <result column="degree" jdbcType="INTEGER" property="degree" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, owner_id, phone, building, home_num, marriage, idty_num, political_landscape, 
-    card_num, payment, family_id, income, update_dt, create_dt, dr
+    id, owner_id, owner_name, phone, building, home_num, marriage, idty_num, political_landscape, 
+    card_num, payment, family_id, idty_type, income, update_dt, create_dt, dr, native_place, 
+    emergency_contact, emergency_relationship, `degree`
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
@@ -32,28 +39,30 @@
     delete from owner_info
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.pjb.entity.OwnerInfo">
-    insert into owner_info (id, owner_id, phone, 
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="entity.OwnerInfo" useGeneratedKeys="true">
+    insert into owner_info (owner_id, owner_name, phone, 
       building, home_num, marriage, 
       idty_num, political_landscape, card_num, 
-      payment, family_id, income, 
-      update_dt, create_dt, dr
-      )
-    values (#{id,jdbcType=VARCHAR}, #{ownerId,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      payment, family_id, idty_type, 
+      income, update_dt, create_dt, 
+      dr, native_place, emergency_contact, 
+      emergency_relationship, `degree`)
+    values (#{ownerId,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{building,jdbcType=INTEGER}, #{homeNum,jdbcType=INTEGER}, #{marriage,jdbcType=INTEGER}, 
       #{idtyNum,jdbcType=VARCHAR}, #{politicalLandscape,jdbcType=VARCHAR}, #{cardNum,jdbcType=BIGINT}, 
-      #{payment,jdbcType=INTEGER}, #{familyId,jdbcType=VARCHAR}, #{income,jdbcType=INTEGER}, 
-      #{updateDt,jdbcType=TIMESTAMP}, #{createDt,jdbcType=TIMESTAMP}, #{dr,jdbcType=INTEGER}
-      )
+      #{payment,jdbcType=INTEGER}, #{familyId,jdbcType=VARCHAR}, #{idtyType,jdbcType=INTEGER}, 
+      #{income,jdbcType=INTEGER}, #{updateDt,jdbcType=TIMESTAMP}, #{createDt,jdbcType=TIMESTAMP}, 
+      #{dr,jdbcType=INTEGER}, #{nativePlace,jdbcType=VARCHAR}, #{emergencyContact,jdbcType=VARCHAR}, 
+      #{emergencyRelationship,jdbcType=VARCHAR}, #{degree,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.pjb.entity.OwnerInfo">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="entity.OwnerInfo" useGeneratedKeys="true">
     insert into owner_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
       <if test="ownerId != null">
         owner_id,
+      </if>
+      <if test="ownerName != null">
+        owner_name,
       </if>
       <if test="phone != null">
         phone,
@@ -82,6 +91,9 @@
       <if test="familyId != null">
         family_id,
       </if>
+      <if test="idtyType != null">
+        idty_type,
+      </if>
       <if test="income != null">
         income,
       </if>
@@ -94,13 +106,25 @@
       <if test="dr != null">
         dr,
       </if>
+      <if test="nativePlace != null">
+        native_place,
+      </if>
+      <if test="emergencyContact != null">
+        emergency_contact,
+      </if>
+      <if test="emergencyRelationship != null">
+        emergency_relationship,
+      </if>
+      <if test="degree != null">
+        `degree`,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=VARCHAR},
-      </if>
       <if test="ownerId != null">
         #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        #{ownerName,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
@@ -129,6 +153,9 @@
       <if test="familyId != null">
         #{familyId,jdbcType=VARCHAR},
       </if>
+      <if test="idtyType != null">
+        #{idtyType,jdbcType=INTEGER},
+      </if>
       <if test="income != null">
         #{income,jdbcType=INTEGER},
       </if>
@@ -141,13 +168,28 @@
       <if test="dr != null">
         #{dr,jdbcType=INTEGER},
       </if>
+      <if test="nativePlace != null">
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null">
+        #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyRelationship != null">
+        #{emergencyRelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        #{degree,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.pjb.entity.OwnerInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="entity.OwnerInfo">
     update owner_info
     <set>
       <if test="ownerId != null">
         owner_id = #{ownerId,jdbcType=VARCHAR},
+      </if>
+      <if test="ownerName != null">
+        owner_name = #{ownerName,jdbcType=VARCHAR},
       </if>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
@@ -176,6 +218,9 @@
       <if test="familyId != null">
         family_id = #{familyId,jdbcType=VARCHAR},
       </if>
+      <if test="idtyType != null">
+        idty_type = #{idtyType,jdbcType=INTEGER},
+      </if>
       <if test="income != null">
         income = #{income,jdbcType=INTEGER},
       </if>
@@ -188,12 +233,25 @@
       <if test="dr != null">
         dr = #{dr,jdbcType=INTEGER},
       </if>
+      <if test="nativePlace != null">
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyContact != null">
+        emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
+      </if>
+      <if test="emergencyRelationship != null">
+        emergency_relationship = #{emergencyRelationship,jdbcType=VARCHAR},
+      </if>
+      <if test="degree != null">
+        `degree` = #{degree,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.pjb.entity.OwnerInfo">
+  <update id="updateByPrimaryKey" parameterType="entity.OwnerInfo">
     update owner_info
     set owner_id = #{ownerId,jdbcType=VARCHAR},
+      owner_name = #{ownerName,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       building = #{building,jdbcType=INTEGER},
       home_num = #{homeNum,jdbcType=INTEGER},
@@ -203,10 +261,15 @@
       card_num = #{cardNum,jdbcType=BIGINT},
       payment = #{payment,jdbcType=INTEGER},
       family_id = #{familyId,jdbcType=VARCHAR},
+      idty_type = #{idtyType,jdbcType=INTEGER},
       income = #{income,jdbcType=INTEGER},
       update_dt = #{updateDt,jdbcType=TIMESTAMP},
       create_dt = #{createDt,jdbcType=TIMESTAMP},
-      dr = #{dr,jdbcType=INTEGER}
+      dr = #{dr,jdbcType=INTEGER},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      emergency_contact = #{emergencyContact,jdbcType=VARCHAR},
+      emergency_relationship = #{emergencyRelationship,jdbcType=VARCHAR},
+      `degree` = #{degree,jdbcType=INTEGER}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>

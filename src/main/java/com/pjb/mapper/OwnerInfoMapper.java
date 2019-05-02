@@ -1,14 +1,14 @@
 package com.pjb.mapper;
 
 
-import com.pjb.base.BaseMapper;
+import com.pjb.config.MyMapper;
 import com.pjb.entity.OwnerInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Component;
 
-@Component
 @Mapper
-public interface OwnerInfoMapper extends BaseMapper<OwnerInfo> {
+@Component
+public interface OwnerInfoMapper extends MyMapper<OwnerInfo> {
 //    int deleteByPrimaryKey(String id);
 //
 //    int insert(OwnerInfo record);

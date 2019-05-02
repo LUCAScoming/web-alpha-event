@@ -30,7 +30,7 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @ApiOperation(value = "新增", notes = "", produces = "application/json")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public OwnerInfo add(@RequestBody OwnerInfo ownerInfo) {
-        return super.add(ownerInfo);
+            return super.add(ownerInfo);
     }
 
 
