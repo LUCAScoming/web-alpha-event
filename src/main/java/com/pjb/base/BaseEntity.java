@@ -1,5 +1,7 @@
 package com.pjb.base;
 
+import lombok.Data;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -10,13 +12,16 @@ import javax.persistence.Transient;
  * @Date:2019/4/25
  **/
 @Entity
+@Data
 public class BaseEntity {
+
     @Id
     String id;
 
     public String getId() {
         return id;
     }
+
 
     public void setId(String id) {
         this.id = id;

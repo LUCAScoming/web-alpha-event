@@ -30,7 +30,7 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @ApiOperation(value = "新增", notes = "", produces = "application/json")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public OwnerInfo add(@RequestBody OwnerInfo ownerInfo) {
-            return super.add(ownerInfo);
+        return super.add(ownerInfo);
     }
 
 
@@ -60,9 +60,11 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     }
 
 
-    @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<OwnerInfo> pageByCondition(@RequestBody OwnerInfo ownerInfo) {
+    @ApiOperation(value = "查询分页",
+            notes = "传入查询的条件和分页条件，查询全部数据分页的时候传一个空对象，默认一页10条")
+    @GetMapping("/condition")
+    @ResponseBody
+    public PageInfo<OwnerInfo> pageByCondition(@ModelAttribute OwnerInfo ownerInfo) {
         if (ownerInfo == null) {
             PageHelper.startPage(1, 10);
             List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
@@ -75,5 +77,6 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
         PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
         return info;
     }
+
 
 }
