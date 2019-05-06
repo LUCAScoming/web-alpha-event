@@ -1,5 +1,7 @@
 package com.pjb.controller;
 
+import com.pjb.config.BussinessException;
+import com.pjb.config.Constant;
 import com.pjb.entity.User;
 import com.pjb.mapper.UserMapper;
 import com.pjb.service.UserService;
@@ -40,6 +42,10 @@ public class UserController {
 //        String username =userVail.getUsername();
 //        String password = userVail.getPassword();
         Map<Object,Object> map = new HashMap<>();
+//        校验数据，非法字符报错，无法登录
+        if(!vaild(username)){
+            throw  new BussinessException(Constant.EX004);
+        }
         if(StringUtils.isEmpty(username)||StringUtils.isEmpty(password)){
             map.put("login",0);
             return map;
@@ -67,6 +73,10 @@ public class UserController {
             e.printStackTrace();
         }
         return map;
+    }
+
+    private boolean vaild(String username) {
+        return true;
     }
 
 }

@@ -1,17 +1,32 @@
 package com.pjb.mapper;
 
+import com.pjb.config.MyMapper;
 import com.pjb.entity.CostInfo;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface CostInfoMapper {
-    int deleteByPrimaryKey(String id);
+@Mapper
+public interface CostInfoMapper extends MyMapper<CostInfo> {
 
-    int insert(CostInfo record);
+//    int deleteByPrimaryKey(String id);
+//
+//
+//    @Override
+//    int insert(CostInfo record);
+//
+//
+//    @Override
+//    int insertSelective(CostInfo record);
+//
+//
+//    CostInfo selectByPrimaryKey(String id);
+//
+//
+//    @Override
+//    int updateByPrimaryKeySelective(CostInfo record);
+//
+//
+//    @Override
+//    int updateByPrimaryKey(CostInfo record);
 
-    int insertSelective(CostInfo record);
 
-    CostInfo selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(CostInfo record);
-
-    int updateByPrimaryKey(CostInfo record);
 }

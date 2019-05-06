@@ -1,5 +1,8 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +10,8 @@ import java.util.Date;
  * music_info
  * @author 
  */
-public class MusicInfo implements Serializable {
+@Entity
+public class MusicInfo extends BaseEntity implements Serializable {
     /**
      * 记录id
      */

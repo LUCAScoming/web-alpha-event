@@ -22,4 +22,5 @@ public class Constant {
     * 传入的参数不能有id
     * */
     public static final String EX003 = "传入的参数不能有id";
+    public static final String EX004 = "数据校验不通过";
 }

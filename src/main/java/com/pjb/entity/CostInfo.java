@@ -1,5 +1,8 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,184 +10,192 @@ import java.util.Date;
  * cost_info
  * @author 
  */
-public class CostInfo implements Serializable {
-    /**
-     * 实体id
-     */
-    private String id;
+@Entity
+public class CostInfo extends BaseEntity implements Serializable {
 
+//    /**
+//     * 实体id
+//     */
+//    private String id;
     /**
      * 费用类型
      */
     private Integer costType;
-
     /**
      * 费用号
      */
     private Long costNum;
-
     /**
      * 消费者id
      */
     private String consumerId;
-
     /**
      * 消费时间
      */
     private Date consumerTime;
-
     /**
      * 消费地点
      */
     private String consumerArea;
-
     /**
      * 处理人id
      */
     private String processerId;
-
     /**
      * 余额
      */
     private Float balance;
-
     /**
      * 处理人姓名
      */
     private String processerName;
-
     /**
      * 消费明细
      */
     private String consumerDetail;
-
     /**
      * 消费项目
      */
     private Integer consumerEvent;
-
     /**
      * 备注
      */
     private String comment;
-
     private Date createDt;
-
     private Date updateDt;
-
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Integer getCostType() {
         return costType;
     }
 
+
     public void setCostType(Integer costType) {
         this.costType = costType;
     }
+
 
     public Long getCostNum() {
         return costNum;
     }
 
+
     public void setCostNum(Long costNum) {
         this.costNum = costNum;
     }
+
 
     public String getConsumerId() {
         return consumerId;
     }
 
+
     public void setConsumerId(String consumerId) {
         this.consumerId = consumerId;
     }
+
 
     public Date getConsumerTime() {
         return consumerTime;
     }
 
+
     public void setConsumerTime(Date consumerTime) {
         this.consumerTime = consumerTime;
     }
+
 
     public String getConsumerArea() {
         return consumerArea;
     }
 
+
     public void setConsumerArea(String consumerArea) {
         this.consumerArea = consumerArea;
     }
+
 
     public String getProcesserId() {
         return processerId;
     }
 
+
     public void setProcesserId(String processerId) {
         this.processerId = processerId;
     }
+
 
     public Float getBalance() {
         return balance;
     }
 
+
     public void setBalance(Float balance) {
         this.balance = balance;
     }
+
 
     public String getProcesserName() {
         return processerName;
     }
 
+
     public void setProcesserName(String processerName) {
         this.processerName = processerName;
     }
+
 
     public String getConsumerDetail() {
         return consumerDetail;
     }
 
+
     public void setConsumerDetail(String consumerDetail) {
         this.consumerDetail = consumerDetail;
     }
+
 
     public Integer getConsumerEvent() {
         return consumerEvent;
     }
 
+
     public void setConsumerEvent(Integer consumerEvent) {
         this.consumerEvent = consumerEvent;
     }
+
 
     public String getComment() {
         return comment;
     }
 
+
     public void setComment(String comment) {
         this.comment = comment;
     }
+
 
     public Date getCreateDt() {
         return createDt;
     }
 
+
     public void setCreateDt(Date createDt) {
         this.createDt = createDt;
     }
+
 
     public Date getUpdateDt() {
         return updateDt;
     }
 
+
     public void setUpdateDt(Date updateDt) {
         this.updateDt = updateDt;
     }
+
 
     @Override
     public boolean equals(Object that) {
@@ -214,6 +225,7 @@ public class CostInfo implements Serializable {
             && (this.getUpdateDt() == null ? other.getUpdateDt() == null : this.getUpdateDt().equals(other.getUpdateDt()));
     }
 
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -235,13 +247,14 @@ public class CostInfo implements Serializable {
         return result;
     }
 
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", costType=").append(costType);
         sb.append(", costNum=").append(costNum);
         sb.append(", consumerId=").append(consumerId);
@@ -259,4 +272,6 @@ public class CostInfo implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
+
 }

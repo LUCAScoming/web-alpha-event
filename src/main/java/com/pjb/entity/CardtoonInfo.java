@@ -1,5 +1,8 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
+import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,155 +10,171 @@ import java.util.Date;
  * cardtoon_info
  * @author 
  */
-public class CardtoonInfo implements Serializable {
+@Entity
+public class CardtoonInfo extends BaseEntity implements Serializable {
+
     /**
      * 实体id
      */
     private String id;
-
     /**
      * 使用者的id
      */
     private String userId;
-
     /**
      * 使用时间
      */
     private Date useTime;
-
     /**
      * 使用类型
      */
     private Integer useType;
-
     /**
      * 一卡通号码
      */
     private Long cardNum;
-
     /**
      * 使用地点
      */
     private String useArea;
-
     /**
      * 一卡通状态
      */
     private Integer cardStatu;
-
     /**
      * 余额
      */
     private Double moneyRemained;
-
     /**
      * 操作人id
      */
     private String operId;
-
     private Date createDt;
-
     private Date updateDt;
-
     private Integer dr;
-
     private static final long serialVersionUID = 1L;
 
+    @Override
     public String getId() {
         return id;
     }
 
+
+    @Override
     public void setId(String id) {
         this.id = id;
     }
+
 
     public String getUserId() {
         return userId;
     }
 
+
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
 
     public Date getUseTime() {
         return useTime;
     }
 
+
     public void setUseTime(Date useTime) {
         this.useTime = useTime;
     }
+
 
     public Integer getUseType() {
         return useType;
     }
 
+
     public void setUseType(Integer useType) {
         this.useType = useType;
     }
+
 
     public Long getCardNum() {
         return cardNum;
     }
 
+
     public void setCardNum(Long cardNum) {
         this.cardNum = cardNum;
     }
+
 
     public String getUseArea() {
         return useArea;
     }
 
+
     public void setUseArea(String useArea) {
         this.useArea = useArea;
     }
+
 
     public Integer getCardStatu() {
         return cardStatu;
     }
 
+
     public void setCardStatu(Integer cardStatu) {
         this.cardStatu = cardStatu;
     }
+
 
     public Double getMoneyRemained() {
         return moneyRemained;
     }
 
+
     public void setMoneyRemained(Double moneyRemained) {
         this.moneyRemained = moneyRemained;
     }
+
 
     public String getOperId() {
         return operId;
     }
 
+
     public void setOperId(String operId) {
         this.operId = operId;
     }
+
 
     public Date getCreateDt() {
         return createDt;
     }
 
+
     public void setCreateDt(Date createDt) {
         this.createDt = createDt;
     }
+
 
     public Date getUpdateDt() {
         return updateDt;
     }
 
+
     public void setUpdateDt(Date updateDt) {
         this.updateDt = updateDt;
     }
+
 
     public Integer getDr() {
         return dr;
     }
 
+
     public void setDr(Integer dr) {
         this.dr = dr;
     }
+
 
     @Override
     public boolean equals(Object that) {
@@ -183,6 +202,7 @@ public class CardtoonInfo implements Serializable {
             && (this.getDr() == null ? other.getDr() == null : this.getDr().equals(other.getDr()));
     }
 
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -201,6 +221,7 @@ public class CardtoonInfo implements Serializable {
         result = prime * result + ((getDr() == null) ? 0 : getDr().hashCode());
         return result;
     }
+
 
     @Override
     public String toString() {
@@ -224,4 +245,6 @@ public class CardtoonInfo implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
+
 }
