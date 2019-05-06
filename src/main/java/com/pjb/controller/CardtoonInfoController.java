@@ -17,7 +17,7 @@ import java.util.List;
  * @author zl_liao
  * 2019/5/6 14:25
  */
-@Api("一卡通接口")
+@Api("一卡通管理")
 @RestController
 @RequestMapping("/alpha/CardtoonInfo")
 public class CardtoonInfoController extends BaseController<CardtoonInfo> {

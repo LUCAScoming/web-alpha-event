@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.Date;
@@ -10,7 +12,7 @@ import java.util.Date;
  * @author
  */
 @Entity
-public class EquipmentInfo implements Serializable {
+public class EquipmentInfo extends BaseEntity implements Serializable {
 
     /**
      * 设备id

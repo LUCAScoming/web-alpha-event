@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,8 +9,8 @@ import java.util.Date;
  * property
  * @author 
  */
-public class Property implements Serializable {
-    private String id;
+public class Property extends BaseEntity implements Serializable {
+//    private String id;
 
     /**
      * 物业人员名字
@@ -58,13 +60,7 @@ public class Property implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getPropertyName() {
         return propertyName;
@@ -166,8 +162,7 @@ public class Property implements Serializable {
             return false;
         }
         Property other = (Property) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getPropertyName() == null ? other.getPropertyName() == null : this.getPropertyName().equals(other.getPropertyName()))
+        return (this.getPropertyName() == null ? other.getPropertyName() == null : this.getPropertyName().equals(other.getPropertyName()))
             && (this.getPositionName() == null ? other.getPositionName() == null : this.getPositionName().equals(other.getPositionName()))
             && (this.getJurisdiction() == null ? other.getJurisdiction() == null : this.getJurisdiction().equals(other.getJurisdiction()))
             && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
@@ -184,7 +179,6 @@ public class Property implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getPropertyName() == null) ? 0 : getPropertyName().hashCode());
         result = prime * result + ((getPositionName() == null) ? 0 : getPositionName().hashCode());
         result = prime * result + ((getJurisdiction() == null) ? 0 : getJurisdiction().hashCode());
@@ -205,7 +199,6 @@ public class Property implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", propertyName=").append(propertyName);
         sb.append(", positionName=").append(positionName);
         sb.append(", jurisdiction=").append(jurisdiction);

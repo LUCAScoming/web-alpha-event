@@ -12,10 +12,10 @@ import java.util.Date;
  */
 @Entity
 public class MusicInfo extends BaseEntity implements Serializable {
-    /**
-     * 记录id
-     */
-    private String id;
+//    /**
+//     * 记录id
+//     */
+//    private String id;
 
     /**
      * 广播开始时间
@@ -55,13 +55,6 @@ public class MusicInfo extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Date getMusicStartTime() {
         return musicStartTime;
@@ -182,7 +175,7 @@ public class MusicInfo extends BaseEntity implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", musicStartTime=").append(musicStartTime);
         sb.append(", musicEndTime=").append(musicEndTime);
         sb.append(", musicMsg=").append(musicMsg);

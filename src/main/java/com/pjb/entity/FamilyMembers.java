@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 @Entity
 public class FamilyMembers extends BaseEntity implements Serializable {
-    private String id;
+//    private String id;
 
     /**
      * 成员姓名
@@ -27,17 +27,23 @@ public class FamilyMembers extends BaseEntity implements Serializable {
     /**
      * 成员id
      */
-    private byte[] memberId;
+    private String  memberId;
+/*
+* 关系 1父子
+* */
+    private Integer relation;
+
+    public Integer getRelation() {
+        return relation;
+    }
+
+    public void setRelation(Integer relation) {
+        this.relation = relation;
+    }
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getMemberName() {
         return memberName;
@@ -55,11 +61,11 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         this.identy = identy;
     }
 
-    public byte[] getMemberId() {
+    public String getMemberId() {
         return memberId;
     }
 
-    public void setMemberId(byte[] memberId) {
+    public void setMemberId(String memberId) {
         this.memberId = memberId;
     }
 
@@ -77,8 +83,7 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         FamilyMembers other = (FamilyMembers) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getMemberName() == null ? other.getMemberName() == null : this.getMemberName().equals(other.getMemberName()))
-            && (this.getIdenty() == null ? other.getIdenty() == null : this.getIdenty().equals(other.getIdenty()))
-            && (Arrays.equals(this.getMemberId(), other.getMemberId()));
+            && (this.getIdenty() == null ? other.getIdenty() == null : this.getIdenty().equals(other.getIdenty()));
     }
 
     @Override
@@ -88,7 +93,6 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getMemberName() == null) ? 0 : getMemberName().hashCode());
         result = prime * result + ((getIdenty() == null) ? 0 : getIdenty().hashCode());
-        result = prime * result + (Arrays.hashCode(getMemberId()));
         return result;
     }
 
@@ -98,7 +102,7 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", memberName=").append(memberName);
         sb.append(", identy=").append(identy);
         sb.append(", memberId=").append(memberId);

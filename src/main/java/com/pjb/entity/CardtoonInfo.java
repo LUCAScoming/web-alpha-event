@@ -13,10 +13,10 @@ import java.util.Date;
 @Entity
 public class CardtoonInfo extends BaseEntity implements Serializable {
 
-    /**
-     * 实体id
-     */
-    private String id;
+//    /**
+//     * 实体id
+//     */
+//    private String id;
     /**
      * 使用者的id
      */
@@ -54,16 +54,7 @@ public class CardtoonInfo extends BaseEntity implements Serializable {
     private Integer dr;
     private static final long serialVersionUID = 1L;
 
-    @Override
-    public String getId() {
-        return id;
-    }
 
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 
 
     public String getUserId() {
@@ -229,7 +220,7 @@ public class CardtoonInfo extends BaseEntity implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", userId=").append(userId);
         sb.append(", useTime=").append(useTime);
         sb.append(", useType=").append(useType);

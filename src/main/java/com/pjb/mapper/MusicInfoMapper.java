@@ -1,18 +1,11 @@
 package com.pjb.mapper;
 
 
+import com.pjb.base.BaseMapper;
 import com.pjb.entity.MusicInfo;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface MusicInfoMapper {
-    int deleteByPrimaryKey(String id);
+@Mapper
+public interface MusicInfoMapper extends BaseMapper<MusicInfo> {
 
-    int insert(MusicInfo record);
-
-    int insertSelective(MusicInfo record);
-
-    MusicInfo selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(MusicInfo record);
-
-    int updateByPrimaryKey(MusicInfo record);
 }

@@ -1,20 +1,11 @@
 package com.pjb.mapper;
 
 
+import com.pjb.base.BaseMapper;
 import com.pjb.entity.FamilyMembers;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface FamilyMembersMapper {
-    int deleteByPrimaryKey(String id);
+@Mapper
+public interface FamilyMembersMapper extends BaseMapper<FamilyMembers> {
 
-    int insert(FamilyMembers record);
-
-    int insertSelective(FamilyMembers record);
-
-    FamilyMembers selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(FamilyMembers record);
-
-    int updateByPrimaryKeyWithBLOBs(FamilyMembers record);
-
-    int updateByPrimaryKey(FamilyMembers record);
 }

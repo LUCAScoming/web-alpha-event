@@ -1,18 +1,11 @@
 package com.pjb.mapper;
 
 
+import com.pjb.config.MyMapper;
 import com.pjb.entity.AnnouncementInfo;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface AnnouncementInfoMapper  {
-    int deleteByPrimaryKey(String id);
+@Mapper
+public interface AnnouncementInfoMapper extends MyMapper<AnnouncementInfo> {
 
-    int insert(AnnouncementInfo record);
-
-    int insertSelective(AnnouncementInfo record);
-
-    AnnouncementInfo selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(AnnouncementInfo record);
-
-    int updateByPrimaryKey(AnnouncementInfo record);
 }

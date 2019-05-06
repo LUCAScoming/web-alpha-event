@@ -1,18 +1,13 @@
 package com.pjb.mapper;
 
 
+import com.pjb.base.BaseMapper;
 import com.pjb.entity.CardtoonInfo;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
-public interface CardtoonInfoMapper {
-    int deleteByPrimaryKey(String id);
+@Component
+@Mapper
+public interface CardtoonInfoMapper extends BaseMapper<CardtoonInfo> {
 
-    int insert(CardtoonInfo record);
-
-    int insertSelective(CardtoonInfo record);
-
-    CardtoonInfo selectByPrimaryKey(String id);
-
-    int updateByPrimaryKeySelective(CardtoonInfo record);
-
-    int updateByPrimaryKey(CardtoonInfo record);
 }

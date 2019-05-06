@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.pjb.base.BaseController;
 import com.pjb.entity.CostInfo;
 import com.pjb.service.CostInfoService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ import java.util.List;
  * @author zl_liao
  * 2019/5/6 14:31
  */
+@Api("费用管理")
 @RestController
 @RequestMapping("/alpha/CostInfo")
 public class CostInfoController extends BaseController<CostInfo> {

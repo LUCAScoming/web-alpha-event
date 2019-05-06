@@ -1,18 +1,11 @@
 package com.pjb.mapper;
 
 
+import com.pjb.base.BaseMapper;
 import com.pjb.entity.EquipmentInfo;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface EquipmentInfoMapper {
-    int deleteByPrimaryKey(String equipmentId);
+@Mapper
+public interface EquipmentInfoMapper extends BaseMapper<EquipmentInfo> {
 
-    int insert(EquipmentInfo record);
-
-    int insertSelective(EquipmentInfo record);
-
-    EquipmentInfo selectByPrimaryKey(String equipmentId);
-
-    int updateByPrimaryKeySelective(EquipmentInfo record);
-
-    int updateByPrimaryKey(EquipmentInfo record);
 }

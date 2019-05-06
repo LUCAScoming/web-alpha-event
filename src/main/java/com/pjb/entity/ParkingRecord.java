@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,11 +9,11 @@ import java.util.Date;
  * parking_record
  * @author 
  */
-public class ParkingRecord implements Serializable {
-    /**
-     * 记录id
-     */
-    private String id;
+public class ParkingRecord extends BaseEntity implements Serializable {
+//    /**
+//     * 记录id
+//     */
+//    private String id;
 
     /**
      * 车辆号码
@@ -60,13 +62,7 @@ public class ParkingRecord implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public Long getCarNum() {
         return carNum;
@@ -152,8 +148,8 @@ public class ParkingRecord implements Serializable {
             return false;
         }
         ParkingRecord other = (ParkingRecord) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getCarNum() == null ? other.getCarNum() == null : this.getCarNum().equals(other.getCarNum()))
+        return
+             (this.getCarNum() == null ? other.getCarNum() == null : this.getCarNum().equals(other.getCarNum()))
             && (this.getCarOwnerId() == null ? other.getCarOwnerId() == null : this.getCarOwnerId().equals(other.getCarOwnerId()))
             && (this.getCarOwnerName() == null ? other.getCarOwnerName() == null : this.getCarOwnerName().equals(other.getCarOwnerName()))
             && (this.getCarEnterTime() == null ? other.getCarEnterTime() == null : this.getCarEnterTime().equals(other.getCarEnterTime()))
@@ -168,7 +164,7 @@ public class ParkingRecord implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
+
         result = prime * result + ((getCarNum() == null) ? 0 : getCarNum().hashCode());
         result = prime * result + ((getCarOwnerId() == null) ? 0 : getCarOwnerId().hashCode());
         result = prime * result + ((getCarOwnerName() == null) ? 0 : getCarOwnerName().hashCode());
@@ -187,7 +183,6 @@ public class ParkingRecord implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", carNum=").append(carNum);
         sb.append(", carOwnerId=").append(carOwnerId);
         sb.append(", carOwnerName=").append(carOwnerName);

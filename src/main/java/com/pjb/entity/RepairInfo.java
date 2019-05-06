@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,11 +9,11 @@ import java.util.Date;
  * repair_info
  * @author 
  */
-public class RepairInfo implements Serializable {
-    /**
-     * 实体id
-     */
-    private String id;
+public class RepairInfo extends BaseEntity implements Serializable {
+//    /**
+//     * 实体id
+//     */
+//    private String id;
 
     /**
      * 报修人id
@@ -80,13 +82,7 @@ public class RepairInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getReporterId() {
         return reporterId;
@@ -204,8 +200,7 @@ public class RepairInfo implements Serializable {
             return false;
         }
         RepairInfo other = (RepairInfo) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getReporterId() == null ? other.getReporterId() == null : this.getReporterId().equals(other.getReporterId()))
+        return (this.getReporterId() == null ? other.getReporterId() == null : this.getReporterId().equals(other.getReporterId()))
             && (this.getReporterName() == null ? other.getReporterName() == null : this.getReporterName().equals(other.getReporterName()))
             && (this.getRepReason() == null ? other.getRepReason() == null : this.getRepReason().equals(other.getRepReason()))
             && (this.getRepDescription() == null ? other.getRepDescription() == null : this.getRepDescription().equals(other.getRepDescription()))
@@ -224,7 +219,6 @@ public class RepairInfo implements Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
         result = prime * result + ((getReporterId() == null) ? 0 : getReporterId().hashCode());
         result = prime * result + ((getReporterName() == null) ? 0 : getReporterName().hashCode());
         result = prime * result + ((getRepReason() == null) ? 0 : getRepReason().hashCode());
@@ -247,7 +241,6 @@ public class RepairInfo implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", reporterId=").append(reporterId);
         sb.append(", reporterName=").append(reporterName);
         sb.append(", repReason=").append(repReason);

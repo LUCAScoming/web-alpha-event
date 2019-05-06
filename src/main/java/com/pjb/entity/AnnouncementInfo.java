@@ -13,11 +13,11 @@ import java.util.Date;
  */
 @Entity
 public class AnnouncementInfo extends BaseEntity implements Serializable {
-
-    /**
-     * 实体id
-     */
-    private String id;
+//
+//    /**
+//     * 实体id
+//     */
+//    private String id;
     /**
      * 公告内容
      */
@@ -48,16 +48,7 @@ public class AnnouncementInfo extends BaseEntity implements Serializable {
     private Integer status;
     private static final long serialVersionUID = 1L;
 
-    @Override
-    public String getId() {
-        return id;
-    }
 
-
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 
 
     public String getAnnoMsg() {
@@ -175,7 +166,7 @@ public class AnnouncementInfo extends BaseEntity implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", annoMsg=").append(annoMsg);
         sb.append(", annoStartTime=").append(annoStartTime);
         sb.append(", annoEndTime=").append(annoEndTime);

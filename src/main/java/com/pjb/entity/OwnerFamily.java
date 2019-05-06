@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +9,7 @@ import java.util.Date;
  * owner_family
  * @author 
  */
-public class OwnerFamily implements Serializable {
+public class OwnerFamily extends BaseEntity implements Serializable {
     /**
      * 实体id
      */

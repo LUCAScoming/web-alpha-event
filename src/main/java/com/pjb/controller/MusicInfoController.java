@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.pjb.base.BaseController;
 import com.pjb.entity.MusicInfo;
 import com.pjb.service.MusicInfoService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -16,6 +17,7 @@ import java.util.List;
  * @author zl_liao
  * 2019/5/6 15:43
  */
+@Api("小区广播管理")
 @RestController
 @RequestMapping("/alpha/MusicInfo")
 public class MusicInfoController extends BaseController<MusicInfo> {

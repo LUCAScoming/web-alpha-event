@@ -1,5 +1,7 @@
 package com.pjb.entity;
 
+import com.pjb.base.BaseEntity;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,11 +9,11 @@ import java.util.Date;
  * suggestion_complaints
  * @author 
  */
-public class SuggestionComplaints implements Serializable {
-    /**
-     * 实体id
-     */
-    private String id;
+public class SuggestionComplaints extends BaseEntity implements Serializable {
+//    /**
+//     * 实体id
+//     */
+//    private String id;
 
     /**
      * 投诉建议人的id
@@ -60,13 +62,7 @@ public class SuggestionComplaints implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getScerId() {
         return scerId;
@@ -187,7 +183,7 @@ public class SuggestionComplaints implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
+        sb.append(", id=").append(super.getId());
         sb.append(", scerId=").append(scerId);
         sb.append(", scerName=").append(scerName);
         sb.append(", scMsg=").append(scMsg);

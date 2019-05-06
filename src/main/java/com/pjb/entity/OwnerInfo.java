@@ -92,6 +92,10 @@ public class OwnerInfo extends BaseEntity implements Serializable {
      * 1小学，2初中 3高中 4本科 5研究生 6博士 7博士后
      */
     private Integer degree;
+    /*
+     * 民族
+     * */
+    private String national;
     private static final long serialVersionUID = 1L;
 
     public Integer getSex() {
