@@ -4,38 +4,91 @@ import com.pjb.base.BaseEntity;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
-import java.util.Arrays;
 
 /**
  * family_members
- * @author 
+ *
+ * @author
  */
 @Entity
 public class FamilyMembers extends BaseEntity implements Serializable {
+
 //    private String id;
 
     /**
      * 成员姓名
      */
     private String memberName;
-
     /**
      * 身份证号码
      */
     private String identy;
-
     /**
      * 成员id
      */
-    private String  memberId;
-/*
-* 关系 1父子
-* */
+    private String memberId;
+    /*
+     * 关系 1父子
+     * */
     private Integer relation;
+    private String workPlace;
+    private String workName;
+    private String workPosition;
+    private String phone;
+    private String ownerId;
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
+    }
+
+
+    public String getWorkPlace() {
+        return workPlace;
+    }
+
+
+    public void setWorkPlace(String workPlace) {
+        this.workPlace = workPlace;
+    }
+
+
+    public String getWorkName() {
+        return workName;
+    }
+
+    public void setWorkName(String workName) {
+        this.workName = workName;
+    }
+
+    public String getWorkPosition() {
+        return workPosition;
+    }
+
+
+    public void setWorkPosition(String workPosition) {
+        this.workPosition = workPosition;
+    }
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
 
     public Integer getRelation() {
         return relation;
     }
+
 
     public void setRelation(Integer relation) {
         this.relation = relation;
@@ -43,31 +96,35 @@ public class FamilyMembers extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-
-
     public String getMemberName() {
         return memberName;
     }
+
 
     public void setMemberName(String memberName) {
         this.memberName = memberName;
     }
 
+
     public String getIdenty() {
         return identy;
     }
+
 
     public void setIdenty(String identy) {
         this.identy = identy;
     }
 
+
     public String getMemberId() {
         return memberId;
     }
 
+
     public void setMemberId(String memberId) {
         this.memberId = memberId;
     }
+
 
     @Override
     public boolean equals(Object that) {
@@ -82,9 +139,10 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         }
         FamilyMembers other = (FamilyMembers) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getMemberName() == null ? other.getMemberName() == null : this.getMemberName().equals(other.getMemberName()))
-            && (this.getIdenty() == null ? other.getIdenty() == null : this.getIdenty().equals(other.getIdenty()));
+                && (this.getMemberName() == null ? other.getMemberName() == null : this.getMemberName().equals(other.getMemberName()))
+                && (this.getIdenty() == null ? other.getIdenty() == null : this.getIdenty().equals(other.getIdenty()));
     }
+
 
     @Override
     public int hashCode() {
@@ -95,6 +153,7 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         result = prime * result + ((getIdenty() == null) ? 0 : getIdenty().hashCode());
         return result;
     }
+
 
     @Override
     public String toString() {
@@ -110,4 +169,6 @@ public class FamilyMembers extends BaseEntity implements Serializable {
         sb.append("]");
         return sb.toString();
     }
+
+
 }

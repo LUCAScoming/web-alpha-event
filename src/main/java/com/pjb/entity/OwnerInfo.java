@@ -2,8 +2,10 @@ package com.pjb.entity;
 
 import com.pjb.base.BaseEntity;
 
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * owner_info
@@ -96,6 +98,52 @@ public class OwnerInfo extends BaseEntity implements Serializable {
      * 民族
      * */
     private String national;
+    /*紧急联系人姓名*/
+    private String emergencyName;
+    /*国籍
+     * */
+    private String nationality;
+
+    @Transient
+    private List<FamilyMembers> familyMembersList ;
+
+    public List<FamilyMembers> getFamilyMembersList() {
+        return familyMembersList;
+    }
+
+    public void setFamilyMembersList(List<FamilyMembers> familyMembersList) {
+        this.familyMembersList = familyMembersList;
+    }
+
+    public String getNational() {
+        return national;
+    }
+
+
+    public void setNational(String national) {
+        this.national = national;
+    }
+
+
+    public String getEmergencyName() {
+        return emergencyName;
+    }
+
+
+    public void setEmergencyName(String emergencyName) {
+        this.emergencyName = emergencyName;
+    }
+
+
+    public String getNationality() {
+        return nationality;
+    }
+
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getSex() {
