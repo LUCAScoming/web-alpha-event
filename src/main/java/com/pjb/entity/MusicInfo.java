@@ -53,6 +53,16 @@ public class MusicInfo extends BaseEntity implements Serializable {
 
     private Integer dr;
 
+    private String equipmentId;
+
+    public String getEquipmentId() {
+        return equipmentId;
+    }
+
+    public void setEquipmentId(String equipmentId) {
+        this.equipmentId = equipmentId;
+    }
+
     private static final long serialVersionUID = 1L;
 
 

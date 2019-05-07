@@ -1,8 +1,11 @@
 package com.pjb.mapper;
 
 
+import com.pjb.base.BaseMapper;
 import com.pjb.entity.OwnerFamily;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface OwnerFamilyMapper {
+@Mapper
+public interface OwnerFamilyMapper extends BaseMapper<OwnerFamily> {
 
 }

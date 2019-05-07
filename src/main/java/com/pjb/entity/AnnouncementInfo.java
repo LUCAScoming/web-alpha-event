@@ -46,6 +46,15 @@ public class AnnouncementInfo extends BaseEntity implements Serializable {
      * 状态
      */
     private Integer status;
+    private String equipmentId;
+
+    public String getEquipmentId() {
+        return equipmentId;
+    }
+
+    public void setEquipmentId(String equipmentId) {
+        this.equipmentId = equipmentId;
+    }
     private static final long serialVersionUID = 1L;
 
 

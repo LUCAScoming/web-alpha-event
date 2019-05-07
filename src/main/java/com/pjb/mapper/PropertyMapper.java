@@ -1,8 +1,11 @@
 package com.pjb.mapper;
 
 
+import com.pjb.base.BaseMapper;
 import com.pjb.entity.Property;
+import org.apache.ibatis.annotations.Mapper;
 
-public interface PropertyMapper {
+@Mapper
+public interface PropertyMapper extends BaseMapper<Property>{
 
 }
