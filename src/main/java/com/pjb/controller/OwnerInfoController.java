@@ -14,6 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -52,9 +53,26 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @ApiOperation(value = "查找", notes = "通过id返回对象实体", produces = "application/json")
     @GetMapping("/{id}")
     public OwnerInfo entity(@PathVariable String id) {
+        if (StringUtils.isEmpty(id)) {
+            return new OwnerInfo();
+        }
+        FamilyMembers familyMembers = new FamilyMembers();
+        familyMembers.setOwnerId(id);
         OwnerInfo ownerInfo = new OwnerInfo();
         ownerInfo.setId(id);
-        return super.select(ownerInfo);
+        OwnerInfo ownerInfo1 = super.select(ownerInfo);
+        if (ownerInfo1 == null) {
+            return null;
+        }
+        List<FamilyMembers> familyMembersList = familyMembersService.selectByEntity(familyMembers);
+        if (familyMembersList == null) {
+            List<FamilyMembers> list = new ArrayList<>();
+            ownerInfo1.setFamilyMembersList(list);
+            return ownerInfo1;
+        }
+        ownerInfo1.setFamilyMembersList(familyMembersList);
+        return ownerInfo1;
+
     }
 
 
