@@ -49,8 +49,8 @@ public class MusicInfoController extends BaseController<MusicInfo> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<MusicInfo> pageByCondition(@RequestBody MusicInfo info) {
+    @GetMapping("/condition")
+    public PageInfo<MusicInfo> pageByCondition(@ModelAttribute MusicInfo info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<MusicInfo> listByCondition = musicInfoService.selectByAll();

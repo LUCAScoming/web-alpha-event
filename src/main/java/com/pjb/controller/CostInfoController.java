@@ -49,8 +49,8 @@ public class CostInfoController extends BaseController<CostInfo> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<CostInfo> pageByCondition(@RequestBody CostInfo info) {
+    @GetMapping("/condition")
+    public PageInfo<CostInfo> pageByCondition(@ModelAttribute CostInfo info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<CostInfo> listByCondition = costInfoService.selectByAll();

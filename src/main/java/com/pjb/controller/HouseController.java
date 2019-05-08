@@ -22,8 +22,10 @@ import java.util.List;
 @RestController
 @Api(value = "房产资料管理")
 public class HouseController extends BaseController<House> {
+
     @Autowired
     private HouseService houseService;
+
     @Override
     @ApiOperation(value = "新增或者修改", notes = "修改的时候传入实体id", produces = "application/json")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -48,8 +50,8 @@ public class HouseController extends BaseController<House> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<House> pageByCondition(@RequestBody House ownerInfo) {
+    @GetMapping("/condition")
+    public PageInfo<House> pageByCondition(@ModelAttribute House ownerInfo) {
         if (ownerInfo == null) {
             PageHelper.startPage(1, 10);
             List<House> listByCondition = houseService.selectByAll();
@@ -62,4 +64,6 @@ public class HouseController extends BaseController<House> {
         PageInfo<House> info = new PageInfo<>(listByCondition);
         return info;
     }
+
+
 }

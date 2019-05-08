@@ -49,8 +49,8 @@ public class PropertyController extends BaseController<Property> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<Property> pageByCondition(@RequestBody Property info) {
+    @GetMapping("/condition")
+    public PageInfo<Property> pageByCondition(@ModelAttribute Property info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<Property> listByCondition = service.selectByAll();

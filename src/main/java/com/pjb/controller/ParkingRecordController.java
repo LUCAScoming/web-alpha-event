@@ -49,8 +49,8 @@ public class ParkingRecordController extends BaseController<ParkingRecord> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<ParkingRecord> pageByCondition(@RequestBody ParkingRecord info) {
+    @GetMapping("/condition")
+    public PageInfo<ParkingRecord> pageByCondition(@ModelAttribute ParkingRecord info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<ParkingRecord> listByCondition = service.selectByAll();

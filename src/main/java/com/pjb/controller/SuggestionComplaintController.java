@@ -49,8 +49,8 @@ public class SuggestionComplaintController extends BaseController<SuggestionComp
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<SuggestionComplaints> pageByCondition(@RequestBody SuggestionComplaints info) {
+    @GetMapping("/condition")
+    public PageInfo<SuggestionComplaints> pageByCondition(@ModelAttribute SuggestionComplaints info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<SuggestionComplaints> listByCondition = service.selectByAll();

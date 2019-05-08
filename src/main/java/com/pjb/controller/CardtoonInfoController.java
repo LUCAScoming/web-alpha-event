@@ -49,8 +49,8 @@ public class CardtoonInfoController extends BaseController<CardtoonInfo> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<CardtoonInfo> pageByCondition(@RequestBody CardtoonInfo info) {
+    @GetMapping("/condition")
+    public PageInfo<CardtoonInfo> pageByCondition(@ModelAttribute CardtoonInfo info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<CardtoonInfo> listByCondition = cardtoonInfoService.selectByAll();

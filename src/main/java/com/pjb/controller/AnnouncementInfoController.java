@@ -49,8 +49,8 @@ public class AnnouncementInfoController extends BaseController<AnnouncementInfo>
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<AnnouncementInfo> pageByCondition(@RequestBody AnnouncementInfo info) {
+    @GetMapping("/condition")
+    public PageInfo<AnnouncementInfo> pageByCondition(@ModelAttribute AnnouncementInfo info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<AnnouncementInfo> listByCondition = announcementInfoService.selectByAll();

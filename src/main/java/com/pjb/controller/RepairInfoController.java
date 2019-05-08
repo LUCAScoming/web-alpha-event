@@ -49,8 +49,8 @@ public class RepairInfoController extends BaseController<RepairInfo> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<RepairInfo> pageByCondition(@RequestBody RepairInfo info) {
+    @GetMapping("/condition")
+    public PageInfo<RepairInfo> pageByCondition(@ModelAttribute RepairInfo info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<RepairInfo> listByCondition = service.selectByAll();

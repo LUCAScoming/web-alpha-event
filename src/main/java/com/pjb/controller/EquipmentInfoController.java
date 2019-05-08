@@ -49,8 +49,8 @@ public class EquipmentInfoController extends BaseController<EquipmentInfo> {
 
 
     @ApiOperation(value = "查询分页")
-    @PostMapping("/condition")
-    public PageInfo<EquipmentInfo> pageByCondition(@RequestBody EquipmentInfo info) {
+    @GetMapping("/condition")
+    public PageInfo<EquipmentInfo> pageByCondition(@ModelAttribute EquipmentInfo info) {
         if (info == null) {
             PageHelper.startPage(1, 10);
             List<EquipmentInfo> listByCondition = service.selectByAll();
