@@ -30,7 +30,7 @@ public class FamilyMembers extends BaseEntity implements Serializable {
     /*
      * 关系 1父子
      * */
-    private Integer relation;
+    private String relation;
     private String workPlace;
     private String workName;
     private String workPosition;
@@ -85,12 +85,11 @@ public class FamilyMembers extends BaseEntity implements Serializable {
     }
 
 
-    public Integer getRelation() {
+    public String getRelation() {
         return relation;
     }
 
-
-    public void setRelation(Integer relation) {
+    public void setRelation(String relation) {
         this.relation = relation;
     }
 

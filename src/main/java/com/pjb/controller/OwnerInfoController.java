@@ -14,10 +14,7 @@ import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author:Lucas
@@ -38,6 +35,12 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @ApiOperation(value = "新增", notes = "", produces = "application/json")
     @PostMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public OwnerInfo add(@RequestBody OwnerInfo ownerInfo) {
+        if (ownerInfo.getId() == null) {
+            ownerInfo.setCreateDt(new Date());
+            ownerInfo.setUpdateDt(new Date());
+        } else {
+            ownerInfo.setUpdateDt(new Date());
+        }
         OwnerInfo info = super.add(ownerInfo);
         if (ownerInfo.getFamilyMembersList() != null) {
             List<FamilyMembers> familyMembersList = ownerInfo.getFamilyMembersList();
@@ -102,15 +105,16 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @GetMapping("/condition")
     @ResponseBody
     public PageInfo<OwnerInfo> pageByCondition(@ModelAttribute OwnerInfo ownerInfo) {
-        if (ownerInfo == null) {
+        if (ownerInfo.getOwnerId()==null||ownerInfo.getOwnerName()==null) {
             PageHelper.startPage(1, 10);
-            List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
+            List<OwnerInfo> listByCondition = ownerInfoService.listByOrdeBY();
             PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
             return info;
         }
         PageHelper.startPage(ownerInfo.getPageNum(), ownerInfo.getPageSize());
 //        List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
         List<OwnerInfo> listByCondition = ownerInfoService.listByCondition(ownerInfo);
+        ownerInfoService.sort(listByCondition);
         PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
         return info;
     }
