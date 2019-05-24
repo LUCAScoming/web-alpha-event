@@ -105,18 +105,23 @@ public class OwnerInfoController extends BaseController<OwnerInfo> {
     @GetMapping("/condition")
     @ResponseBody
     public PageInfo<OwnerInfo> pageByCondition(@ModelAttribute OwnerInfo ownerInfo) {
-        if (ownerInfo.getOwnerId()==null||ownerInfo.getOwnerName()==null) {
-            PageHelper.startPage(1, 10);
-            List<OwnerInfo> listByCondition = ownerInfoService.listByOrdeBY();
-            PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
-            return info;
-        }
+//        if (ownerInfo.getOwnerId() == null && ownerInfo.getOwnerName() == null) {
+//            PageHelper.startPage(1, 10);
+//            List<OwnerInfo> listByCondition = ownerInfoService.listByOrdeBY();
+//            PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
+//            return info;
+//        } else {
+//
+//        }
         PageHelper.startPage(ownerInfo.getPageNum(), ownerInfo.getPageSize());
 //        List<OwnerInfo> listByCondition = ownerInfoService.selectByAll();
-        List<OwnerInfo> listByCondition = ownerInfoService.listByCondition(ownerInfo);
-        ownerInfoService.sort(listByCondition);
+        String createDt = "createDt";
+        String rule = "orderRule_DESC";
+        List<OwnerInfo> listByCondition = ownerInfoService.selectByEntity(ownerInfo, createDt, rule);
+//            ownerInfoService.sort(listByCondition);
         PageInfo<OwnerInfo> info = new PageInfo<>(listByCondition);
         return info;
+
     }
 
 

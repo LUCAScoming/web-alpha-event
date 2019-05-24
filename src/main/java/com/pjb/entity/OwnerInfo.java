@@ -61,10 +61,10 @@ public class OwnerInfo extends BaseEntity implements Serializable {
      * 0未交费，1已缴费
      */
     private Integer payment;
-    /**
-     * 家庭成员id
-     */
-    private String familyId;
+//    /**
+//     * 家庭成员id
+//     */
+//    private String familyId;
     /**
      * 证件类型
      * 1身份证 2军人 3港澳 4外籍
@@ -266,14 +266,14 @@ public class OwnerInfo extends BaseEntity implements Serializable {
     }
 
 
-    public String getFamilyId() {
-        return familyId;
-    }
-
-
-    public void setFamilyId(String familyId) {
-        this.familyId = familyId;
-    }
+//    public String getFamilyId() {
+//        return familyId;
+//    }
+//
+//
+//    public void setFamilyId(String familyId) {
+//        this.familyId = familyId;
+//    }
 
 
     public Integer getIdtyType() {
@@ -389,7 +389,6 @@ public class OwnerInfo extends BaseEntity implements Serializable {
                 && (this.getPoliticalLandscape() == null ? other.getPoliticalLandscape() == null : this.getPoliticalLandscape().equals(other.getPoliticalLandscape()))
                 && (this.getCardNum() == null ? other.getCardNum() == null : this.getCardNum().equals(other.getCardNum()))
                 && (this.getPayment() == null ? other.getPayment() == null : this.getPayment().equals(other.getPayment()))
-                && (this.getFamilyId() == null ? other.getFamilyId() == null : this.getFamilyId().equals(other.getFamilyId()))
                 && (this.getIdtyType() == null ? other.getIdtyType() == null : this.getIdtyType().equals(other.getIdtyType()))
                 && (this.getIncome() == null ? other.getIncome() == null : this.getIncome().equals(other.getIncome()))
                 && (this.getUpdateDt() == null ? other.getUpdateDt() == null : this.getUpdateDt().equals(other.getUpdateDt()))
@@ -417,7 +416,6 @@ public class OwnerInfo extends BaseEntity implements Serializable {
         result = prime * result + ((getPoliticalLandscape() == null) ? 0 : getPoliticalLandscape().hashCode());
         result = prime * result + ((getCardNum() == null) ? 0 : getCardNum().hashCode());
         result = prime * result + ((getPayment() == null) ? 0 : getPayment().hashCode());
-        result = prime * result + ((getFamilyId() == null) ? 0 : getFamilyId().hashCode());
         result = prime * result + ((getIdtyType() == null) ? 0 : getIdtyType().hashCode());
         result = prime * result + ((getIncome() == null) ? 0 : getIncome().hashCode());
         result = prime * result + ((getUpdateDt() == null) ? 0 : getUpdateDt().hashCode());
@@ -448,7 +446,6 @@ public class OwnerInfo extends BaseEntity implements Serializable {
         sb.append(", politicalLandscape=").append(politicalLandscape);
         sb.append(", cardNum=").append(cardNum);
         sb.append(", payment=").append(payment);
-        sb.append(", familyId=").append(familyId);
         sb.append(", idtyType=").append(idtyType);
         sb.append(", income=").append(income);
         sb.append(", updateDt=").append(updateDt);
