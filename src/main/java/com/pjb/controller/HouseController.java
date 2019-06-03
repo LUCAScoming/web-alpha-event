@@ -9,9 +9,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author:Lucas
@@ -41,11 +44,24 @@ public class HouseController extends BaseController<House> {
     }
 
 
-    @Override
     @ApiOperation(value = "删除", notes = "通过实体没有返回", produces = "application/json")
-    @DeleteMapping()
-    public void delete(@RequestBody House house) {
-        super.delete(house);
+    @DeleteMapping("/{id}")
+    public Map<String, Object> delete(@PathVariable String id) {
+        Map<String, Object> map = new HashMap<>();
+        if (StringUtils.isEmpty(id)) {
+            map.put("删除:", "失败,id为空");
+            return map;
+        } else if (houseService.selectById(id) == null) {
+            map.put("删除:", "失败，删除对象不存在");
+            return map;
+        } else {
+            House ownerInfo = new House();
+            ownerInfo.setId(id);
+            super.delete(ownerInfo);
+            map.put("删除:", "删除成功");
+            return map;
+        }
+
     }
 
 
